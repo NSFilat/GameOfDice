@@ -73,10 +73,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-<<<<<<< HEAD
-    - _Color: {r: 0.097913995, g: 0.03529413, b: 0.6039216, a: 1}
-=======
-    - _Color: {r: 0.03702387, g: 0.19915956, b: 0.6037736, a: 1}
->>>>>>> parent of b43c208... Reset wall color
+    - _Color: {r: 0.1339657, g: 0.010457456, b: 0.4433962, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
