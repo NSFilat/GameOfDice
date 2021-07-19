@@ -6,7 +6,7 @@ public class Jumping : MonoBehaviour
 {
     private Rigidbody playerRigidbody;
 
-    [SerializeField] private float jumpForce = 50f;
+    [SerializeField] private float jumpForce = 1000f;
 
     private float x;
     private float y;
