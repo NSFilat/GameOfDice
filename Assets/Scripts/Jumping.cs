@@ -25,7 +25,7 @@ public class Jumping : MonoBehaviour
             y = Random.Range(0.5f, 0.8f);
             z = Random.Range(-1f, 1f);
 
-            playerRigidbody.AddForce(new Vector3(x, y, z) * jumpForce);
+            playerRigidbody.AddForce(new Vector3(x, 0, z) * jumpForce);
         }
     }
 }
