@@ -6,7 +6,7 @@ public class Jumping : MonoBehaviour
 {
     private Rigidbody _playerRigidbody;
 
-    [SerializeField] private float jumpForce = 1000f;
+    [SerializeField] private float jumpForce = 200f;
 
     private float x;
     private float y;
@@ -20,13 +20,6 @@ public class Jumping : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetButtonDown("Jump"))
-        {
-            x = Random.Range(-1f, 1f);
-            y = Random.Range(0.5f, 0.8f);
-            z = Random.Range(-1f, 1f);
-
-            _playerRigidbody.AddTorque(new Vector3(x, 0, z) * jumpForce);
-        }
+        _playerRigidbody.AddForce(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * jumpForce);
     }
 }
