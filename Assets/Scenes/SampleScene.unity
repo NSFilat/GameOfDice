@@ -1111,6 +1111,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 770001727659218068, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 61aea4b6d5c8cda42aaab28d322dfd88, type: 2}
     - target: {fileID: 770001727659218071, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
       propertyPath: m_Enabled
       value: 1
