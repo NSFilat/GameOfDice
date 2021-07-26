@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Jumping : MonoBehaviour
 {
-    private Rigidbody playerRigidbody;
+    private Rigidbody _playerRigidbody;
 
     [SerializeField] private float jumpForce = 1000f;
 
@@ -14,7 +14,8 @@ public class Jumping : MonoBehaviour
 
     private void Start()
     {
-        playerRigidbody = GetComponent<Rigidbody>();
+        _playerRigidbody = GetComponent<Rigidbody>();
+        _playerRigidbody.maxAngularVelocity = Mathf.Infinity;
     }
 
     private void Update()
@@ -25,7 +26,7 @@ public class Jumping : MonoBehaviour
             y = Random.Range(0.5f, 0.8f);
             z = Random.Range(-1f, 1f);
 
-            playerRigidbody.AddForce(new Vector3(x, 0, z) * jumpForce);
+            _playerRigidbody.AddTorque(new Vector3(x, 0, z) * jumpForce);
         }
     }
 }
