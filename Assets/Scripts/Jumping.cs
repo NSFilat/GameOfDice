@@ -20,6 +20,6 @@ public class Jumping : MonoBehaviour
 
     private void Update()
     {
-        _playerRigidbody.AddForce(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * jumpForce);
+        _playerRigidbody.AddForce(new Vector3 (Input.acceleration.x, 0f, -Input.acceleration.z) * jumpForce);
     }
 }
