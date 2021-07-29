@@ -4,43 +4,72 @@ using UnityEngine;
 
 public class WallsArangement : MonoBehaviour
 {
+    
     public Transform LeftWall;
     public Transform RightWall;
     public Transform UpperWall;
     public Transform LowerWall;
+    
+    
+    const float size_x = 13.24f;
+
+
     // Start is called before the first frame update
     void Awake()
     {
-        //gameObject.transform.position = new Vector3(Screen.width, Screen)
+        int width = Screen.width;
+        int height = Screen.height;
 
-        print($"Screen width = {Screen.width}  Screen heigth = {Screen.height}");
-        //Camera.main.he = 0.5625f;
-        print(Camera.main.aspect);
+        int NOD = FindNOD(width, height);
 
-        /*
-        float left_x = -0.3f * ((float)(Screen.height) / Screen.width) / (16.0f / 9.0f);
-        float left_z = -4.2f * ((float)(Screen.height) / Screen.width) / (16.0f / 9.0f);
+        print($"Screen width = {width} Screen height = {height} NOD = {NOD}");
 
-        LeftWall.position = new Vector3(left_x, 0, left_z);
+        width /= NOD;
+        height /= NOD;
 
-        print(LeftWall.position);
+        //float position_z = 0;
 
-        float right_x = -0.3f * ((float)(Screen.height) / Screen.width) / (16.0f / 9.0f);
-        float right_z = 4.2f * ((float)(Screen.height) / Screen.width) / (16.0f / 9.0f);
+        DefineSize(width, height, out float position_z);
 
-        RightWall.position = new Vector3(right_x, 0, right_z);
+        LeftWall.position = new Vector3(LeftWall.position.x, 0, -position_z - 0.5f);
+        RightWall.position = new Vector3(RightWall.position.x, 0, position_z + 0.5f);
 
-        float upper_x = -7.13f * ((float)(Screen.height) / Screen.width) / (16.0f / 9.0f);
-        float upper_z = 0.08f * ((float)(Screen.height) / Screen.width) / (16.0f / 9.0f);
+        UpperWall.localScale = new Vector3(UpperWall.localScale.x, UpperWall.localScale.y, position_z * 2 + 2);
+        LowerWall.localScale = new Vector3(LowerWall.localScale.x, LowerWall.localScale.y, position_z * 2 + 2);
 
-        UpperWall.position = new Vector3(upper_x, 0, upper_z);
 
-        float lower_x = 7.13f * ((float)(Screen.height) / Screen.width) / (16.0f / 9.0f);
-        float lower_z = -0.08f * ((float)(Screen.height) / Screen.width) / (16.0f / 9.0f);
+    }
 
-        LowerWall.position = new Vector3(lower_x, 0, lower_z);
-        */
+    private void DefineSize(float width, float height, out float position_z)
+    {
+        float koef = size_x / height;
+        float result = width * koef;
+        position_z = result / 2;
 
+    }
+
+    private int FindNOD(int a, int b)
+    {
+        if (a == 0)
+        {
+            return b;
+        }
+        else
+        {
+            while (b != 0)
+            {
+                if (a > b)
+                {
+                    a -= b;
+                }
+                else
+                {
+                    b -= a;
+                }
+            }
+
+            return a;
+        }
     }
 
     // Update is called once per frame
