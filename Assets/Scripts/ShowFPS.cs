@@ -10,5 +10,11 @@ public class ShowFPS : MonoBehaviour
     {
         fps = 1.0f / Time.deltaTime;
         GUILayout.Label("FPS: " + (int)fps);
+        GUILayout.Label("FPS: " + (int)fps);
+        GUILayout.Label("FPS: " + (int)fps);
+        GUILayout.Label("FPS: " + (int)fps);
+        GUILayout.Label("FPS: " + (int)fps);
+        GUILayout.Label("FPS: " + (int)fps);
+
     }
 }

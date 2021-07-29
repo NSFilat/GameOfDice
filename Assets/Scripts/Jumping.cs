@@ -24,7 +24,14 @@ public class Jumping : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        _playerRigidbody.AddForce(new Vector3 (Input.acceleration.z, 0f, Input.acceleration.x) * jumpForce);
+       _playerRigidbody.AddForce(new Vector3 (Input.acceleration.z, 0f, Input.acceleration.x) * jumpForce);
         //_playerRigidbody.AddForce(new Vector3(-Input.GetAxis("Vertical"), 0f, Input.GetAxis("Horizontal")) * jumpForce);
+    }
+    private void Update()
+    {
+        if (Application.targetFrameRate == 29)
+        {
+            gameObject.GetComponent<Renderer>().material.color = Color.red;
+        }
     }
 }
