@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScreenTimeout : MonoBehaviour
 {
-    void Awake()
+    void Start()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
