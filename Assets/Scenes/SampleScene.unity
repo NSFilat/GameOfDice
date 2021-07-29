@@ -679,7 +679,7 @@ MonoBehaviour:
     m_Bits: 64
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
-  antialiasingMode: 0
+  antialiasingMode: 1
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25
@@ -688,7 +688,7 @@ MonoBehaviour:
   subpixelMorphologicalAntialiasing:
     quality: 2
   fastApproximateAntialiasing:
-    fastMode: 0
+    fastMode: 1
     keepAlpha: 0
   fog:
     enabled: 1
@@ -1102,24 +1102,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5585467714810833243, guid: a69a3d116cc2e4749ae46fe41a3c5356, type: 3}
   m_PrefabInstance: {fileID: 1598090202}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1826050553 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3741693547505944851, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
-  m_PrefabInstance: {fileID: 770001727651127662}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1826050560
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1826050553}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.020000005, y: 0.020000007, z: 0.020000003}
-  m_Center: {x: -4.3368087e-19, y: 0, z: 9.313226e-10}
 --- !u!1001 &770001727651127662
 PrefabInstance:
   m_ObjectHideFlags: 0
