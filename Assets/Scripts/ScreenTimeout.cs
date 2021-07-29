@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FrameRate : MonoBehaviour
+public class ScreenTimeout : MonoBehaviour
 {
     void Awake()
     {
-        Application.targetFrameRate = 60;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
 }
