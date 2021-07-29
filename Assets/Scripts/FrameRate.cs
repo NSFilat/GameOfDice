@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Position : MonoBehaviour
+public class FrameRate : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        print(transform.position.y);
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
