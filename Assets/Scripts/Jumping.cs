@@ -16,10 +16,12 @@ public class Jumping : MonoBehaviour
 
         _diceRigidbody.maxAngularVelocity = Mathf.Infinity;
     }
+
     private void FixedUpdate()
     {
         _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * jumpForce);
     }
+
     private void Update()
     {
         _diceRenderer.material.color = (int)(1f / Time.deltaTime) <= 30 ? Color.red : Color.white;
