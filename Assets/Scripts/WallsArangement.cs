@@ -4,77 +4,45 @@ using UnityEngine;
 
 public class WallsArangement : MonoBehaviour
 {
-    
-    public Transform LeftWall;
-    public Transform RightWall;
-    public Transform UpperWall;
-    public Transform LowerWall;
-    
-    
-    const float size_x = 13.24f;
+    const float Size_x = 13.24f;
 
+    [SerializeField] private float horizontalOffset = 0.5f;
+    [SerializeField] private float verticalOffset = 2f;
 
-    // Start is called before the first frame update
-    void Awake()
+    [SerializeField] private Transform _upperWall;
+    [SerializeField] private Transform _lowerWall;
+    [SerializeField] private Transform _rightWall;
+    [SerializeField] private Transform _leftWall;
+
+    void Start()
     {
         int width = Screen.width;
         int height = Screen.height;
 
-        int NOD = FindNOD(width, height);
+        int GCD = FindGCD(width, height);
 
-        print($"Screen width = {width} Screen height = {height} NOD = {NOD}");
+        // print($"Screen width = {width} Screen height = {height} NOD = {GCD}");
 
-        width /= NOD;
-        height /= NOD;
-
-        //float position_z = 0;
+        width /= GCD;
+        height /= GCD;
 
         DefineSize(width, height, out float position_z);
 
-        LeftWall.position = new Vector3(LeftWall.position.x, 0, -position_z - 0.5f);
-        RightWall.position = new Vector3(RightWall.position.x, 0, position_z + 0.5f);
+        _leftWall.position = new Vector3(_leftWall.position.x, 0, -position_z - horizontalOffset);
+        _rightWall.position = new Vector3(_rightWall.position.x, 0, position_z + horizontalOffset);
 
-        UpperWall.localScale = new Vector3(UpperWall.localScale.x, UpperWall.localScale.y, position_z * 2 + 2);
-        LowerWall.localScale = new Vector3(LowerWall.localScale.x, LowerWall.localScale.y, position_z * 2 + 2);
-
-
+        _upperWall.localScale = new Vector3(_upperWall.localScale.x, _upperWall.localScale.y, position_z * 2 + verticalOffset);
+        _lowerWall.localScale = new Vector3(_lowerWall.localScale.x, _lowerWall.localScale.y, position_z * 2 + verticalOffset);
     }
 
-    private void DefineSize(float width, float height, out float position_z)
+    private void DefineSize(int width, int height, out float position_z)
     {
-        float koef = size_x / height;
-        float result = width * koef;
-        position_z = result / 2;
-
+        float coefficient = Size_x / height;
+        position_z = width * coefficient / 2;
     }
 
-    private int FindNOD(int a, int b)
+    private int FindGCD(int a, int b)
     {
-        if (a == 0)
-        {
-            return b;
-        }
-        else
-        {
-            while (b != 0)
-            {
-                if (a > b)
-                {
-                    a -= b;
-                }
-                else
-                {
-                    b -= a;
-                }
-            }
-
-            return a;
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return b == 0 ? a : FindGCD(b, a % b);
     }
 }

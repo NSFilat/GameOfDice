@@ -4,34 +4,26 @@ using UnityEngine;
 
 public class Jumping : MonoBehaviour
 {
-    private Rigidbody _playerRigidbody;
+    private Rigidbody _diceRigidbody;
+    private Renderer _diceRenderer;
 
     [SerializeField] private float jumpForce = 200f;
 
-    private float x;
-    private float y;
-    private float z;
-
     private void Start()
     {
-        _playerRigidbody = GetComponent<Rigidbody>();
-        _playerRigidbody.maxAngularVelocity = Mathf.Infinity;
-        //y = gameObject.GetComponent<BoxCollider>().size.y;
-        //y = gameObject.GetComponent<MeshCollider>().bounds.size.y;
-        //transform.position = new Vector3(0f, y / 2, 0f);
-        //print(y / 2);
-       
+        _diceRigidbody = GetComponent<Rigidbody>();
+        _diceRenderer = GetComponent<Renderer>();
+
+        _diceRigidbody.maxAngularVelocity = Mathf.Infinity;
     }
+
     private void FixedUpdate()
     {
-       _playerRigidbody.AddForce(new Vector3 (Input.acceleration.z, 0f, Input.acceleration.x) * jumpForce);
-        //_playerRigidbody.AddForce(new Vector3(-Input.GetAxis("Vertical"), 0f, Input.GetAxis("Horizontal")) * jumpForce);
+        _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * jumpForce);
     }
+
     private void Update()
     {
-        if (Application.targetFrameRate == 29)
-        {
-            gameObject.GetComponent<Renderer>().material.color = Color.red;
-        }
+        _diceRenderer.material.color = (int)(1f / Time.deltaTime) <= 30 ? Color.red : Color.white;
     }
 }
