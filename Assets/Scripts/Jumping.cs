@@ -18,18 +18,34 @@ public class Jumping : MonoBehaviour
         _diceRigidbody.maxAngularVelocity = Mathf.Infinity;
     }
     bool flag = true;
+    bool flag3 = false;
+
+    
     private void FixedUpdate()
     {
-        if (flag)
+        if (flag && Input.acceleration != Vector3.zero)
         {
             default_position = Input.acceleration;
             flag = false;
         }
 
-        _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - default_position.z, 0f, Input.acceleration.x - default_position.x) * jumpForce);
+        if (_diceRigidbody.velocity.magnitude < 2)
+        {
+            _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - default_position.z, 0f, Input.acceleration.x - default_position.x) * jumpForce);
+        }
+        else
+        {
+            _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - default_position.z, 0f, Input.acceleration.x - default_position.x) * jumpForce);
+            flag3 = true;
+        }
+
+        if (flag3 && _diceRigidbody.velocity.magnitude < 2)
+            _diceRigidbody.AddForce(new Vector3(0f, 0f, 0f) * jumpForce);
+        //Debug.Log(Input.acceleration);
 
         //_diceRigidbody.AddForce(new Vector3(0f, 0f, 0f) * jumpForce);
     }
+    
 
     void OnGUI()
     {
