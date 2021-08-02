@@ -20,6 +20,14 @@ public class Jumping : MonoBehaviour
     private void FixedUpdate()
     {
         _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * jumpForce);
+
+        //_diceRigidbody.AddForce(new Vector3(0f, 0f, 0f) * jumpForce);
+    }
+
+    void OnGUI()
+    {
+        GUILayout.Label("Input.acceleration: " + Input.acceleration);
+
     }
 
     private void Update()

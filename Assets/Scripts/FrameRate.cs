@@ -12,6 +12,8 @@ public class FrameRate : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
+    /*
+
     void OnGUI()
     {
         fps = 1.0f / Time.deltaTime;
@@ -23,4 +25,5 @@ public class FrameRate : MonoBehaviour
         GUILayout.Label("FPS: " + (int)fps);
 
     }
+    */
 }
