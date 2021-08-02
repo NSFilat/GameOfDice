@@ -26,7 +26,11 @@ public class Jumping : MonoBehaviour
 
     void OnGUI()
     {
-        GUILayout.Label("Input.acceleration: " + Input.acceleration);
+        GUIStyle myStyle = new GUIStyle();
+        myStyle.fontSize = 40;
+        //GUILayout.Label("Input.acceleration: " + Input.acceleration);
+        GUI.Label(new Rect(0, 0, 300, 100), "Input.acceleration: " + Input.acceleration, myStyle);
+       
 
     }
 
