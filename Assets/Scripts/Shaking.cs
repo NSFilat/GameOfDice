@@ -9,8 +9,8 @@ public class Shaking : MonoBehaviour
     private Vector3 default_position;
 
     [SerializeField] private float jumpForce = 200f;
-    [SerializeField] private float begin_speed = 5f;
-    [SerializeField] private float end_speed = 5f;
+    [SerializeField] private float begin_speed = 15f;
+    [SerializeField] private float end_speed = 1f;
 
     private void Start()
     {
@@ -18,12 +18,22 @@ public class Shaking : MonoBehaviour
         _diceRenderer = GetComponent<Renderer>();
 
         _diceRigidbody.maxAngularVelocity = Mathf.Infinity;
-        default_position = GetComponent<PreparationForShaking>().Default_position;
         Debug.Log($"Shaking {default_position} ");
-
+        StartCoroutine(PreparationCoroutine());
         StartCoroutine(ShakingCoroutine());
     }
 
+    IEnumerator PreparationCoroutine()
+    {
+        while (Input.acceleration == Vector3.zero)
+        {
+            yield return null;
+        }
+
+        default_position = Input.acceleration;
+        Debug.Log(default_position);
+    }
+        
     bool IsStart = true;
     bool IsMoved = true;
     IEnumerator ShakingCoroutine()
@@ -31,13 +41,13 @@ public class Shaking : MonoBehaviour
         IsStart = true;
         IsMoved = true;
 
-        float speed = _diceRigidbody.velocity.magnitude;
+        //float speed = _diceRigidbody.velocity.magnitude;
 
         while (IsStart)
         {
             _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - default_position.z, 0f, Input.acceleration.x - default_position.x) * jumpForce);
             Debug.Log("---------");
-            if (speed > begin_speed) IsStart = false;
+            if (_diceRigidbody.velocity.magnitude > begin_speed) IsStart = false;
             yield return null;
         }
 
@@ -45,9 +55,12 @@ public class Shaking : MonoBehaviour
         {
             _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - default_position.z, 0f, Input.acceleration.x - default_position.x) * jumpForce);
             Debug.Log("++++++");
-            if (speed < end_speed) IsMoved = !IsMoved;
+            if (_diceRigidbody.velocity.magnitude < end_speed) IsMoved = !IsMoved;
             yield return null;
         }
+
+        StartCoroutine(PreparationCoroutine());
+        StartCoroutine(ShakingCoroutine());
     }
     
 
