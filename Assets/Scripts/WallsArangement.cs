@@ -21,8 +21,6 @@ public class WallsArangement : MonoBehaviour
 
         int GCD = FindGCD(width, height);
 
-        // print($"Screen width = {width} Screen height = {height} NOD = {GCD}");
-
         width /= GCD;
         height /= GCD;
 
