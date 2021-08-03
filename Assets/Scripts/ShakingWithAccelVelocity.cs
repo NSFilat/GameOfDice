@@ -8,7 +8,7 @@ public class ShakingWithAccelVelocity : MonoBehaviour
     private Renderer _diceRenderer;
     private Vector3 default_position;
 
-    [SerializeField] private float jumpForce = 200f;
+    [SerializeField] private float jumpForce = 400f;
     [SerializeField] private float begin_speed = 15f;
     [SerializeField] private float end_speed = 1f;
 
@@ -54,21 +54,22 @@ public class ShakingWithAccelVelocity : MonoBehaviour
         {
             velocity = Mathf.Sqrt(Mathf.Pow((Input.acceleration.x - x_prev), 2) + Mathf.Pow((Input.acceleration.z - z_prev), 2)) / 0.02;
             if (velocity > 0.5)
-                _diceRigidbody.AddForce(new Vector3(default_position.z + Input.acceleration.z, 0f, default_position.x + Input.acceleration.x) * jumpForce);
+                _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
+                //_diceRigidbody.AddForce(new Vector3(Input.acceleration.z + 0.5f, 0f, Input.acceleration.x - default_position.x) * jumpForce);
             x_prev = Input.acceleration.x;
             z_prev = Input.acceleration.z;
-            Debug.Log("---------");
-            //if (_diceRigidbody.velocity.magnitude > begin_speed) IsStart = false;
+            Debug.Log($"Velocity = {velocity}");
+            if (velocity > begin_speed) IsStart = false;
             yield return null;
         }
 
-        while (IsMoved)
-        {
-            _diceRigidbody.AddForce(new Vector3(default_position.z + Input.acceleration.z, 0f, default_position.x + Input.acceleration.x) * jumpForce);
-            Debug.Log("++++++");
-            if (_diceRigidbody.velocity.magnitude < end_speed) IsMoved = !IsMoved;
-            yield return null;
-        }
+        //while (IsMoved)
+        //{
+        //    _diceRigidbody.AddForce(new Vector3(default_position.z + Input.acceleration.z, 0f, default_position.x + Input.acceleration.x) * jumpForce);
+        //    Debug.Log("++++++");
+        //    if (_diceRigidbody.velocity.magnitude < end_speed) IsMoved = !IsMoved;
+        //    yield return null;
+        //}
 
         StartCoroutine(PreparationCoroutine());
         StartCoroutine(ShakingCoroutine());
