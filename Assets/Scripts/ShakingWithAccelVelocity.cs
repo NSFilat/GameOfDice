@@ -8,7 +8,7 @@ public class ShakingWithAccelVelocity : MonoBehaviour
     private Renderer _diceRenderer;
     private Vector3 default_position;
 
-    [SerializeField] private float jumpForce = 450f;
+    [SerializeField] private float jumpForce = 400f;
     [SerializeField] private float begin_speed = 15f;
     [SerializeField] private float end_speed = 1f;
 
