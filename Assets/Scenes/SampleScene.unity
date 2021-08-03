@@ -141,7 +141,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floor: {fileID: 1276561429}
-  default_position: {x: 0, y: 0, z: 0}
 --- !u!1 &522519053
 GameObject:
   m_ObjectHideFlags: 0
