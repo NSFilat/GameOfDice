@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shaking : MonoBehaviour
+public class ShakingWithAccelVelocity : MonoBehaviour
 {
     private Rigidbody _diceRigidbody;
     private Renderer _diceRenderer;
@@ -33,22 +33,32 @@ public class Shaking : MonoBehaviour
         default_position = Input.acceleration;
         Debug.Log(default_position);
     }
-        
+
     bool IsStart = true;
     bool IsMoved = true;
+    double velocity = 0;
     IEnumerator ShakingCoroutine()
     {
         IsStart = true;
         IsMoved = true;
 
+
+
         //float speed = _diceRigidbody.velocity.magnitude;
+
+        float x_prev = default_position.x;
+        float z_prev = default_position.z;
+       
 
         while (IsStart)
         {
-            if(_diceRigidbody.velocity.magnitude == 0)
-            _diceRigidbody.AddForce(new Vector3(default_position.z + Input.acceleration.z , 0f, default_position.x + Input.acceleration.x) * jumpForce);
+            velocity = Mathf.Sqrt(Mathf.Pow((Input.acceleration.x - x_prev), 2) + Mathf.Pow((Input.acceleration.z - z_prev), 2)) / 0.02;
+            if (velocity > 0.5)
+                _diceRigidbody.AddForce(new Vector3(default_position.z + Input.acceleration.z, 0f, default_position.x + Input.acceleration.x) * jumpForce);
+            x_prev = Input.acceleration.x;
+            z_prev = Input.acceleration.z;
             Debug.Log("---------");
-            if (_diceRigidbody.velocity.magnitude > begin_speed) IsStart = false;
+            //if (_diceRigidbody.velocity.magnitude > begin_speed) IsStart = false;
             yield return null;
         }
 
@@ -63,7 +73,7 @@ public class Shaking : MonoBehaviour
         StartCoroutine(PreparationCoroutine());
         StartCoroutine(ShakingCoroutine());
     }
-    
+
 
     void OnGUI()
     {
@@ -75,6 +85,7 @@ public class Shaking : MonoBehaviour
         GUI.Label(new Rect(0, 80, 300, 100), "IsStart: " + IsStart, myStyle);
         GUI.Label(new Rect(0, 120, 300, 100), "IsMoved: " + IsMoved, myStyle);
         GUI.Label(new Rect(0, 160, 300, 100), "Speed: " + _diceRigidbody.velocity.magnitude, myStyle);
+        GUI.Label(new Rect(0, 200, 300, 100), "AccelVelocity: " + velocity, myStyle);
 
     }
 }

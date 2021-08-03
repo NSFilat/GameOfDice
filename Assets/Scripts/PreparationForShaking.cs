@@ -12,7 +12,7 @@ public class PreparationForShaking : MonoBehaviour
             transform.position = new Vector3(0f, transform.position.y, 0f);
             transform.rotation = Quaternion.identity;
             //Debug.Log("ColisionStay");
-            gameObject.AddComponent<Shaking>();
+            //gameObject.AddComponent<Shaking>();
             Destroy(gameObject.GetComponent<PreparationForShaking>());
         }
     }
