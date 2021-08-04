@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.5}
+  m_Color: {r: 0.4716981, g: 0.015574946, b: 0.26154605, a: 0.5}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -362,18 +362,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 2
+    m_FontSize: 56
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 79
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter text...
+  m_Text: "\u041F\u0418\u0428\u0418 \u0421\u042E\u0414\u0410!\U0001F920\U0001F920"
 --- !u!222 &625250553
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1264,11 +1264,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 5
+    m_MaxSize: 50
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 0
@@ -1557,8 +1557,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -460, y: -945}
-  m_SizeDelta: {x: 359.77, y: 89}
+  m_AnchoredPosition: {x: -324.7, y: -911.1}
+  m_SizeDelta: {x: 428.81, y: 90.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1985544426
 MonoBehaviour:
@@ -1616,7 +1616,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1985544429}
         m_TargetAssemblyTypeName: ChangeTorque, Assembly-CSharp
-        m_MethodName: ChangeTorq
+        m_MethodName: ChgeTorq
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1688,6 +1688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 1985544426}
+  _dice: {fileID: 19801643}
 --- !u!1001 &770001727651127662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1710,6 +1711,10 @@ PrefabInstance:
     - target: {fileID: 770001727659218064, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
       propertyPath: m_Constraints
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 770001727659218064, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 770001727659218068, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
       propertyPath: m_Convex

@@ -20,7 +20,7 @@ public class ShakingWithAccelVelocity : MonoBehaviour
         _diceRigidbody = GetComponent<Rigidbody>();
         _diceRenderer = GetComponent<Renderer>();
 
-        _diceRigidbody.maxAngularVelocity = 100;
+        _diceRigidbody.maxAngularVelocity = Mathf.Infinity;
         StartCoroutine(PreparationCoroutine());
         
         
@@ -130,9 +130,9 @@ public class ShakingWithAccelVelocity : MonoBehaviour
         GUI.Label(new Rect(0, 40, 300, 100), "Input.acceleration: " + Input.acceleration, myStyle);
         GUI.Label(new Rect(0, 80, 300, 100), "IsStart: " + IsStart, myStyle);
         GUI.Label(new Rect(0, 120, 300, 100), "IsMoved: " + IsMoved, myStyle);
-        //GUI.Label(new Rect(0, 160, 300, 100), "Speed: " + _diceRigidbody.velocity.magnitude, myStyle);
+        GUI.Label(new Rect(0, 160, 300, 100), "Speed: " + _diceRigidbody.velocity.magnitude, myStyle);
         GUI.Label(new Rect(0, 200, 300, 100), "Velocity: " + velocity, myStyle);
-        //GUI.Label(new Rect(0, 240, 300, 100), "AngularVelocity: " + _diceRigidbody.angularVelocity, myStyle);
+        GUI.Label(new Rect(0, 240, 300, 100), "AngularVelocity: " + _diceRigidbody.angularVelocity, myStyle);
         GUI.Label(new Rect(0, 280, 300, 100), "Torque: " + Torque, myStyle);
 
     }
