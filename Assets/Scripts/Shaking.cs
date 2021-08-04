@@ -19,10 +19,11 @@ public class Shaking : MonoBehaviour
 
         _diceRigidbody.maxAngularVelocity = Mathf.Infinity;
         Debug.Log($"Shaking {default_position} ");
-        StartCoroutine(PreparationCoroutine());
-        StartCoroutine(ShakingCoroutine());
+        //StartCoroutine(PreparationCoroutine());
+        //StartCoroutine(ShakingCoroutine());
     }
 
+    /*
     IEnumerator PreparationCoroutine()
     {
         while (Input.acceleration == Vector3.zero)
@@ -77,4 +78,5 @@ public class Shaking : MonoBehaviour
         GUI.Label(new Rect(0, 160, 300, 100), "Speed: " + _diceRigidbody.velocity.magnitude, myStyle);
 
     }
+    */
 }
