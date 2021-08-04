@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44658208, g: 0.4964187, b: 0.5748189, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465835, g: 0.4964198, b: 0.5748218, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -205,7 +205,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &522519053
 GameObject:
@@ -1196,7 +1196,7 @@ RectTransform:
   - {fileID: 1442023239}
   - {fileID: 1295254698}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1392,7 +1392,7 @@ GameObject:
   - component: {fileID: 1295254700}
   - component: {fileID: 1295254699}
   m_Layer: 5
-  m_Name: Jumping
+  m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1414,10 +1414,10 @@ RectTransform:
   m_Father: {fileID: 1239179276}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 280, y: -911.1}
-  m_SizeDelta: {x: 428.81, y: 90.8}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -260, y: 48.900024}
+  m_SizeDelta: {x: 428.81, y: 90.79999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1295254699
 MonoBehaviour:
@@ -1487,8 +1487,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1295254699}
-        m_TargetAssemblyTypeName: ChangingForce, Assembly-CSharp
-        m_MethodName: ChangeForce
+        m_TargetAssemblyTypeName: ChangingAllForces, Assembly-CSharp
+        m_MethodName: ChangeMoveForce
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1734,7 +1734,7 @@ GameObject:
   - component: {fileID: 1442023240}
   - component: {fileID: 1442023243}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1755,10 +1755,10 @@ RectTransform:
   m_Father: {fileID: 1239179276}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 438, y: 866}
-  m_SizeDelta: {x: 131.9, y: 117.1}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -102, y: -94}
+  m_SizeDelta: {x: 131.90002, y: 117.099976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1442023240
 MonoBehaviour:
@@ -1863,9 +1863,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1442023238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f075a61a640b4144ea06a56cadc47b8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a4ef33f2b3148f4e9e0d1f81592a270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputField: {fileID: 0}
 --- !u!1001 &1598090202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1964,49 +1965,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5585467714810833243, guid: a69a3d116cc2e4749ae46fe41a3c5356, type: 3}
   m_PrefabInstance: {fileID: 1598090202}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1766807810
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1766807812}
-  - component: {fileID: 1766807811}
-  m_Layer: 0
-  m_Name: FPS
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1766807811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1766807810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7f4bfb8e0958184cbcd09bab6f83378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1766807812
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1766807810}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.861557, y: -43.09955, z: -4.283538}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1985544424
 GameObject:
   m_ObjectHideFlags: 0
@@ -2021,7 +1979,7 @@ GameObject:
   - component: {fileID: 1985544426}
   - component: {fileID: 1985544429}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: Torque
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2043,10 +2001,10 @@ RectTransform:
   m_Father: {fileID: 1239179276}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -324.7, y: -911.1}
-  m_SizeDelta: {x: 428.81, y: 90.8}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 215.29999, y: 48.900024}
+  m_SizeDelta: {x: 428.81, y: 90.79999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1985544426
 MonoBehaviour:
@@ -2103,8 +2061,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1985544429}
-        m_TargetAssemblyTypeName: ChangeTorque, Assembly-CSharp
-        m_MethodName: ChgeTorq
+        m_TargetAssemblyTypeName: Debbuger, Assembly-CSharp
+        m_MethodName: ChangeTorque
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2172,7 +2130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1985544424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0c80f9d0ea95e743bf837c65bcabb5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a4ef33f2b3148f4e9e0d1f81592a270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 1985544426}

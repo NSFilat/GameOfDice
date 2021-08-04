@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIDebbuger : MonoBehaviour
+public class ParametersInfo: MonoBehaviour
 {
     private float fps;
     void OnGUI()
@@ -11,6 +11,8 @@ public class UIDebbuger : MonoBehaviour
         GUIStyle myStyle = new GUIStyle();
         myStyle.fontSize = 40;
         GUI.Label(new Rect(0, 0, 300, 100), "FPS: " + (int)fps, myStyle);
+        GUI.Label(new Rect(0, 40, 300, 100), "Torque: " + Shaking.Torque, myStyle);
+        GUI.Label(new Rect(0, 80, 300, 100), "JumpForce: " + Shaking.MoveForce, myStyle);
         //GUILayout.Label("Input.acceleration: " + Input.acceleration);
         //GUI.Label(new Rect(0, 0, 300, 100), "Default position: " + default_position, myStyle);
         //GUI.Label(new Rect(0, 40, 300, 100), "Input.acceleration: " + Input.acceleration, myStyle);
@@ -19,9 +21,6 @@ public class UIDebbuger : MonoBehaviour
         //GUI.Label(new Rect(0, 160, 300, 100), "Speed: " + _diceRigidbody.velocity.magnitude, myStyle);
         //GUI.Label(new Rect(0, 200, 300, 100), "Velocity: " + velocity, myStyle);
         //GUI.Label(new Rect(0, 240, 300, 100), "AngularVelocity: " + _diceRigidbody.angularVelocity, myStyle);
-        GUI.Label(new Rect(0, 40, 300, 100), "Torque: " + ShakingWithAccelVelocity.Torque, myStyle);
-        GUI.Label(new Rect(0, 80, 300, 100), "JumpForce: " + ShakingWithAccelVelocity.JumpForce, myStyle);
-
     }
 
 }
