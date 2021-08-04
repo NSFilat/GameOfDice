@@ -8,19 +8,19 @@ public class ShakingWithAccelVelocity : MonoBehaviour
     private Renderer _diceRenderer;
     private Vector3 default_position;
 
+    [SerializeField] private static float torque = 50f;
     [SerializeField] private float jumpForce = 400f;
-    [SerializeField] private float torque = 50f;
     [SerializeField] private float begin_speed = 15f;
     [SerializeField] private float end_speed = 1f;
 
-    public float Torque { set { torque = value; } get { return torque; } }
+    public static float Torque { set { torque = value; } get { return torque; } }
 
     private void Start()
     {
         _diceRigidbody = GetComponent<Rigidbody>();
         _diceRenderer = GetComponent<Renderer>();
 
-        _diceRigidbody.maxAngularVelocity = Mathf.Infinity;
+        _diceRigidbody.maxAngularVelocity = 100;
         StartCoroutine(PreparationCoroutine());
         
         
@@ -45,7 +45,7 @@ public class ShakingWithAccelVelocity : MonoBehaviour
     {
         //Debug.Log($"Default position = {default_position}");
         IsStart = true;
-        IsMoved = true;
+        IsMoved = false;
 
         //float speed = _diceRigidbody.velocity.magnitude;
 
@@ -57,28 +57,14 @@ public class ShakingWithAccelVelocity : MonoBehaviour
 
         //float timeStart = 0f;
 
-        while (IsStart)
+        while (!IsMoved)
         {
             velocity = Mathf.Sqrt(Mathf.Pow((Input.acceleration.x - x_prev_for_velocity), 2) + Mathf.Pow((Input.acceleration.z - z_prev_for_velocity), 2)) / 0.02;
             //Debug.Log(Mathf.Sqrt(Mathf.Pow((Input.acceleration.x - x_prev), 2) + Mathf.Pow((Input.acceleration.z - z_prev), 2)) / 0.02);
             if (velocity > 15)
             {
-                if (Mathf.Abs(Input.acceleration.x - x_prev) < 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) < 0.5f)
-                {
-                    _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
-                    _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque);
-                    //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
-                    x_prev = Input.acceleration.x;
-                    z_prev = Input.acceleration.z;
-                }
-                else if (Mathf.Abs(Input.acceleration.x - x_prev) > 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) > 0.5f)
-                {
-                    _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
-                    _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque);
-                    //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
-                }
-
-                IsStart = !IsStart;
+                ChangeForce(x_prev, z_prev);
+                IsMoved = !IsMoved;
             }
 
             x_prev_for_velocity = Input.acceleration.x;
@@ -89,20 +75,7 @@ public class ShakingWithAccelVelocity : MonoBehaviour
         while (IsMoved)
         {
             velocity = Mathf.Sqrt(Mathf.Pow((Input.acceleration.x - x_prev_for_velocity), 2) + Mathf.Pow((Input.acceleration.z - z_prev_for_velocity), 2)) / 0.02;
-            if (Mathf.Abs(Input.acceleration.x - x_prev) < 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) < 0.5f)
-            {
-                _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
-                _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque);
-                //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
-                x_prev = Input.acceleration.x;
-                z_prev = Input.acceleration.z;
-            }
-            else if (Mathf.Abs(Input.acceleration.x - x_prev) > 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) > 0.5f)
-            {
-                _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
-                _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque);
-                //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
-            }
+            ChangeForce(x_prev, z_prev);
 
             if (velocity < 3)
             {
@@ -120,20 +93,37 @@ public class ShakingWithAccelVelocity : MonoBehaviour
         //StartCoroutine(ShakingCoroutine());
     }
 
-
-    void OnGUI()
+    private void ChangeForce(float x_prev, float z_prev)
     {
-        GUIStyle myStyle = new GUIStyle();
-        myStyle.fontSize = 40;
-        //GUILayout.Label("Input.acceleration: " + Input.acceleration);
-        GUI.Label(new Rect(0, 0, 300, 100), "Default position: " + default_position, myStyle);
-        GUI.Label(new Rect(0, 40, 300, 100), "Input.acceleration: " + Input.acceleration, myStyle);
-        GUI.Label(new Rect(0, 80, 300, 100), "IsStart: " + IsStart, myStyle);
-        GUI.Label(new Rect(0, 120, 300, 100), "IsMoved: " + IsMoved, myStyle);
-        GUI.Label(new Rect(0, 160, 300, 100), "Speed: " + _diceRigidbody.velocity.magnitude, myStyle);
-        GUI.Label(new Rect(0, 200, 300, 100), "Velocity: " + velocity, myStyle);
-        GUI.Label(new Rect(0, 240, 300, 100), "AngularVelocity: " + _diceRigidbody.angularVelocity, myStyle);
-        GUI.Label(new Rect(0, 280, 300, 100), "Torque: " + Torque, myStyle);
-
+        if (Mathf.Abs(Input.acceleration.x - x_prev) < 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) < 0.5f)
+        {
+            _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
+            _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque);
+            //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
+            x_prev = Input.acceleration.x;
+            z_prev = Input.acceleration.z;
+        }
+        else if (Mathf.Abs(Input.acceleration.x - x_prev) > 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) > 0.5f)
+        {
+            _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
+            _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque);
+            //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
+        }
     }
+
+    //void OnGUI()
+    //{
+    //    GUIStyle myStyle = new GUIStyle();
+    //    myStyle.fontSize = 40;
+    //    //GUILayout.Label("Input.acceleration: " + Input.acceleration);
+    //    GUI.Label(new Rect(0, 0, 300, 100), "Default position: " + default_position, myStyle);
+    //    GUI.Label(new Rect(0, 40, 300, 100), "Input.acceleration: " + Input.acceleration, myStyle);
+    //    GUI.Label(new Rect(0, 80, 300, 100), "IsStart: " + IsStart, myStyle);
+    //    GUI.Label(new Rect(0, 120, 300, 100), "IsMoved: " + IsMoved, myStyle);
+    //    GUI.Label(new Rect(0, 160, 300, 100), "Speed: " + _diceRigidbody.velocity.magnitude, myStyle);
+    //    GUI.Label(new Rect(0, 200, 300, 100), "Velocity: " + velocity, myStyle);
+    //    GUI.Label(new Rect(0, 240, 300, 100), "AngularVelocity: " + _diceRigidbody.angularVelocity, myStyle);
+    //    GUI.Label(new Rect(0, 280, 300, 100), "Torque: " + Torque, myStyle);
+
+    //}
 }

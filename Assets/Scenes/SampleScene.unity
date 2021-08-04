@@ -647,6 +647,7 @@ GameObject:
   - component: {fileID: 963194230}
   - component: {fileID: 963194232}
   - component: {fileID: 963194233}
+  - component: {fileID: 963194234}
   m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -914,6 +915,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b616847b4133e5478d38e76c0078720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &963194234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2918a9deb588d24db29a2c59a03df47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1086248276
@@ -1255,7 +1268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.4716981, g: 0.015574946, b: 0.26154605, a: 0.5}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1264,11 +1277,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 5
-    m_MaxSize: 50
+    m_MaxSize: 56
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 0

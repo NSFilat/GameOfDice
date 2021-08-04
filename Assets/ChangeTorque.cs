@@ -9,6 +9,6 @@ public class ChangeTorque : MonoBehaviour
     [SerializeField] private GameObject _dice;
     public void ChgeTorq()
     {
-        _dice.GetComponent<ShakingWithAccelVelocity>().Torque = float.Parse(inputField.text);
+        ShakingWithAccelVelocity.Torque = float.Parse(inputField.text);
     }
 }
