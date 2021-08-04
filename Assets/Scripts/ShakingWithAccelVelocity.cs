@@ -9,9 +9,11 @@ public class ShakingWithAccelVelocity : MonoBehaviour
     private Vector3 default_position;
 
     [SerializeField] private float jumpForce = 400f;
-    [SerializeField] private float torque = 100f;
+    [SerializeField] private float torque = 50f;
     [SerializeField] private float begin_speed = 15f;
     [SerializeField] private float end_speed = 1f;
+
+    public float Torque { set { torque = value; } get { return torque; } }
 
     private void Start()
     {
@@ -64,7 +66,7 @@ public class ShakingWithAccelVelocity : MonoBehaviour
                 if (Mathf.Abs(Input.acceleration.x - x_prev) < 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) < 0.5f)
                 {
                     _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
-                    _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * torque);
+                    _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque);
                     //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
                     x_prev = Input.acceleration.x;
                     z_prev = Input.acceleration.z;
@@ -72,7 +74,7 @@ public class ShakingWithAccelVelocity : MonoBehaviour
                 else if (Mathf.Abs(Input.acceleration.x - x_prev) > 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) > 0.5f)
                 {
                     _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
-                    _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * torque);
+                    _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque);
                     //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
                 }
 
@@ -90,7 +92,7 @@ public class ShakingWithAccelVelocity : MonoBehaviour
             if (Mathf.Abs(Input.acceleration.x - x_prev) < 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) < 0.5f)
             {
                 _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
-                _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * torque);
+                _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque);
                 //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
                 x_prev = Input.acceleration.x;
                 z_prev = Input.acceleration.z;
@@ -98,7 +100,7 @@ public class ShakingWithAccelVelocity : MonoBehaviour
             else if (Mathf.Abs(Input.acceleration.x - x_prev) > 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) > 0.5f)
             {
                 _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
-                _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * torque);
+                _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque);
                 //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
             }
 
@@ -131,6 +133,7 @@ public class ShakingWithAccelVelocity : MonoBehaviour
         //GUI.Label(new Rect(0, 160, 300, 100), "Speed: " + _diceRigidbody.velocity.magnitude, myStyle);
         GUI.Label(new Rect(0, 200, 300, 100), "Velocity: " + velocity, myStyle);
         //GUI.Label(new Rect(0, 240, 300, 100), "AngularVelocity: " + _diceRigidbody.angularVelocity, myStyle);
+        GUI.Label(new Rect(0, 280, 300, 100), "Torque: " + Torque, myStyle);
 
     }
 }
