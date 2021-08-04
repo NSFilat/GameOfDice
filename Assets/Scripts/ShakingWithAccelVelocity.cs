@@ -9,11 +9,13 @@ public class ShakingWithAccelVelocity : MonoBehaviour
     private Vector3 default_position;
 
     [SerializeField] private static float torque = 50f;
-    [SerializeField] private float jumpForce = 400f;
+    [SerializeField] private static float jumpForce = 400f;
     [SerializeField] private float begin_speed = 15f;
     [SerializeField] private float end_speed = 1f;
 
     public static float Torque { set { torque = value; } get { return torque; } }
+
+    public static float JumpForce { set { jumpForce = value; } get { return jumpForce; } }
 
     private void Start()
     {
@@ -38,13 +40,11 @@ public class ShakingWithAccelVelocity : MonoBehaviour
         StartCoroutine(ShakingCoroutine());
     }
 
-    bool IsStart = true;
     bool IsMoved = true;
     double velocity = 0;
     IEnumerator ShakingCoroutine()
     {
         //Debug.Log($"Default position = {default_position}");
-        IsStart = true;
         IsMoved = false;
 
         //float speed = _diceRigidbody.velocity.magnitude;
@@ -63,7 +63,7 @@ public class ShakingWithAccelVelocity : MonoBehaviour
             //Debug.Log(Mathf.Sqrt(Mathf.Pow((Input.acceleration.x - x_prev), 2) + Mathf.Pow((Input.acceleration.z - z_prev), 2)) / 0.02);
             if (velocity > 15)
             {
-                ChangeForce(x_prev, z_prev);
+                ChangeForce(ref x_prev, ref z_prev);
                 IsMoved = !IsMoved;
             }
 
@@ -75,7 +75,7 @@ public class ShakingWithAccelVelocity : MonoBehaviour
         while (IsMoved)
         {
             velocity = Mathf.Sqrt(Mathf.Pow((Input.acceleration.x - x_prev_for_velocity), 2) + Mathf.Pow((Input.acceleration.z - z_prev_for_velocity), 2)) / 0.02;
-            ChangeForce(x_prev, z_prev);
+            ChangeForce(ref x_prev, ref z_prev);
 
             if (velocity < 3)
             {
@@ -93,20 +93,20 @@ public class ShakingWithAccelVelocity : MonoBehaviour
         //StartCoroutine(ShakingCoroutine());
     }
 
-    private void ChangeForce(float x_prev, float z_prev)
+    private void ChangeForce(ref float x_prev, ref float z_prev)
     {
         if (Mathf.Abs(Input.acceleration.x - x_prev) < 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) < 0.5f)
         {
-            _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
-            _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque);
+            _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100) * Time.deltaTime);
+            _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque * Time.deltaTime);
             //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
             x_prev = Input.acceleration.x;
             z_prev = Input.acceleration.z;
         }
         else if (Mathf.Abs(Input.acceleration.x - x_prev) > 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) > 0.5f)
         {
-            _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
-            _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque);
+            _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce * Time.deltaTime);
+            _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque * Time.deltaTime);
             //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
         }
     }

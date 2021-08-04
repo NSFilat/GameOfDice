@@ -5,8 +5,8 @@ using UnityEngine;
 public class UIDebbuger : MonoBehaviour
 {
     private float fps;
-        void OnGUI()
-        {
+    void OnGUI()
+    {
         fps = 1.0f / Time.deltaTime;
         GUIStyle myStyle = new GUIStyle();
         myStyle.fontSize = 40;
@@ -20,6 +20,8 @@ public class UIDebbuger : MonoBehaviour
         //GUI.Label(new Rect(0, 200, 300, 100), "Velocity: " + velocity, myStyle);
         //GUI.Label(new Rect(0, 240, 300, 100), "AngularVelocity: " + _diceRigidbody.angularVelocity, myStyle);
         GUI.Label(new Rect(0, 40, 300, 100), "Torque: " + ShakingWithAccelVelocity.Torque, myStyle);
+        GUI.Label(new Rect(0, 80, 300, 100), "JumpForce: " + ShakingWithAccelVelocity.JumpForce, myStyle);
 
-        }
+    }
+
 }
