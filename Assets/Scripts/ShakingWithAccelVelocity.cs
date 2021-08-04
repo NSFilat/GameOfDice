@@ -20,7 +20,7 @@ public class ShakingWithAccelVelocity : MonoBehaviour
         _diceRigidbody = GetComponent<Rigidbody>();
         _diceRenderer = GetComponent<Renderer>();
 
-        _diceRigidbody.maxAngularVelocity = 100;
+        _diceRigidbody.maxAngularVelocity = 50;
         StartCoroutine(PreparationCoroutine());
         
         
