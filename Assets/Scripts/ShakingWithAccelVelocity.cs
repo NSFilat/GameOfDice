@@ -8,7 +8,8 @@ public class ShakingWithAccelVelocity : MonoBehaviour
     private Renderer _diceRenderer;
     private Vector3 default_position;
 
-    [SerializeField] private float jumpForce = 450f;
+    [SerializeField] private float jumpForce = 400f;
+    [SerializeField] private float torque = 100f;
     [SerializeField] private float begin_speed = 15f;
     [SerializeField] private float end_speed = 1f;
 
@@ -59,12 +60,16 @@ public class ShakingWithAccelVelocity : MonoBehaviour
                 if (Mathf.Abs(Input.acceleration.x - x_prev) < 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) < 0.5f)
                 {
                     _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
+                    //_diceRigidbody.AddTorque(new Vector3(0, 1, 0) * torque);
+                    _diceRigidbody.AddTorque(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
                     x_prev = Input.acceleration.x;
                     z_prev = Input.acceleration.z;
                 }
                 else if (Mathf.Abs(Input.acceleration.x - x_prev) > 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) > 0.5f)
                 {
-                    _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
+                    //_diceRigidbody.AddForce(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
+                    //_diceRigidbody.AddTorque(new Vector3(0, 1, 0) * torque);
+                    _diceRigidbody.AddTorque(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
                 }
             }
                 
