@@ -60,16 +60,16 @@ public class ShakingWithAccelVelocity : MonoBehaviour
                 if (Mathf.Abs(Input.acceleration.x - x_prev) < 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) < 0.5f)
                 {
                     _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
-                    //_diceRigidbody.AddTorque(new Vector3(0, 1, 0) * torque);
-                    _diceRigidbody.AddTorque(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
+                    _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * torque);
+                    //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
                     x_prev = Input.acceleration.x;
                     z_prev = Input.acceleration.z;
                 }
                 else if (Mathf.Abs(Input.acceleration.x - x_prev) > 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) > 0.5f)
                 {
-                    //_diceRigidbody.AddForce(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
-                    //_diceRigidbody.AddTorque(new Vector3(0, 1, 0) * torque);
-                    _diceRigidbody.AddTorque(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
+                    _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
+                    _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * torque);
+                    //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
                 }
             }
                 
