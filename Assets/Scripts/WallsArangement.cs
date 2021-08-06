@@ -8,11 +8,13 @@ public class WallsArangement : MonoBehaviour
 
     [SerializeField] private float horizontalOffset = 0.5f;
     [SerializeField] private float verticalOffset = 2f;
+    [SerializeField] private float floorOffset = 10f;
 
     [SerializeField] private Transform _upperWall;
     [SerializeField] private Transform _lowerWall;
     [SerializeField] private Transform _rightWall;
     [SerializeField] private Transform _leftWall;
+    [SerializeField] private Transform _floor;
 
     void Start()
     {
@@ -31,6 +33,9 @@ public class WallsArangement : MonoBehaviour
 
         _upperWall.localScale = new Vector3(_upperWall.localScale.x, _upperWall.localScale.y, position_z * 2 + verticalOffset);
         _lowerWall.localScale = new Vector3(_lowerWall.localScale.x, _lowerWall.localScale.y, position_z * 2 + verticalOffset);
+
+        _floor.localScale = new Vector3((Mathf.Abs(_upperWall.position.x) * 2 + 1) / floorOffset, 1, (Mathf.Abs(_rightWall.position.z) * 2 + 1) / floorOffset);
+        Debug.Log(_floor.localScale);
     }
 
     private void DefineSize(int width, int height, out float position_z)

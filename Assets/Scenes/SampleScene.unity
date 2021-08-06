@@ -627,10 +627,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalOffset: 0.5
   verticalOffset: 2
+  floorOffset: 10
   _upperWall: {fileID: 1326936263}
   _lowerWall: {fileID: 1598090203}
   _rightWall: {fileID: 812058565}
   _leftWall: {fileID: 709682696}
+  _floor: {fileID: 1276561433}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,7 +2244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 770001727659218064, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
       propertyPath: m_CollisionDetection
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 770001727659218068, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
       propertyPath: m_Convex
@@ -2298,7 +2300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8841440603915709316, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.57
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8841440603915709316, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2332,5 +2334,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 770001727659218071, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
