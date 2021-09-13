@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a4bb8fc7930a54189bd863ac3e8cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floor: {fileID: 1276561429}
+  _floor: {fileID: 1276561429}
 --- !u!1 &146540157
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,9 +625,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d95cd018d9ca554418ec3291e31c5fd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalOffset: 0.5
-  verticalOffset: 2
-  floorOffset: 10
   _upperWall: {fileID: 1326936263}
   _lowerWall: {fileID: 1598090203}
   _rightWall: {fileID: 812058565}
@@ -648,7 +645,6 @@ GameObject:
   - component: {fileID: 963194231}
   - component: {fileID: 963194230}
   - component: {fileID: 963194232}
-  - component: {fileID: 963194233}
   - component: {fileID: 963194234}
   m_Layer: 6
   m_Name: Main Camera
@@ -905,18 +901,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7f4bfb8e0958184cbcd09bab6f83378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &963194233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b616847b4133e5478d38e76c0078720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &963194234
@@ -1433,7 +1417,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4ef33f2b3148f4e9e0d1f81592a270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 1295254700}
 --- !u!114 &1295254700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1868,7 +1851,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4ef33f2b3148f4e9e0d1f81592a270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 0}
 --- !u!1001 &1598090202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2135,7 +2117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4ef33f2b3148f4e9e0d1f81592a270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 1985544426}
 --- !u!1 &1997856236
 GameObject:
   m_ObjectHideFlags: 0

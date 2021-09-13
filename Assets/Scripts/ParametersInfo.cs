@@ -5,33 +5,19 @@ using UnityEngine;
 public class ParametersInfo: MonoBehaviour
 {
     private float fps;
-    static private int _currentIndent = -40;
-    static private Rect _rectSize;
 
     void OnGUI()
     {
         fps = 1.0f / Time.deltaTime;
-        PrintParameter("FPS", fps);
-        PrintParameter("Torque", Shaking.Torque);
-        PrintParameter("JumpForce", Shaking.MoveForce);
 
-        //GUILayout.Label("Input.acceleration: " + Input.acceleration);
-        //GUI.Label(new Rect(0, 0, 300, 100), "Default position: " + default_position, myStyle);
-        //GUI.Label(new Rect(0, 40, 300, 100), "Input.acceleration: " + Input.acceleration, myStyle);
-        //GUI.Label(new Rect(0, 80, 300, 100), "IsStart: " + IsStart, myStyle);
-        //GUI.Label(new Rect(0, 120, 300, 100), "IsMoved: " + IsMoved, myStyle);
-        //GUI.Label(new Rect(0, 160, 300, 100), "Speed: " + _diceRigidbody.velocity.magnitude, myStyle);
-        //GUI.Label(new Rect(0, 200, 300, 100), "Velocity: " + velocity, myStyle);
-        //GUI.Label(new Rect(0, 240, 300, 100), "AngularVelocity: " + _diceRigidbody.angularVelocity, myStyle);
+        PrintParameter("FPS", fps, 0);
+        PrintParameter("Torque", Shaking.Torque, 40);
+        PrintParameter("JumpForce", Shaking.MoveForce, 80);
     }
 
-    private void PrintParameter(string parameterName, object parameter)
+    private void PrintParameter(string parameterName, object parameter, int indent)
     {
-        GUI.Label(_rectSize, $"{parameterName}: " + parameter, CheckGUIStyle());
-        _rectSize = new Rect(0, _currentIndent + CheckGUIStyle().fontSize, 300, 100);
-        _currentIndent += CheckGUIStyle().fontSize;
-
-        DebugRectSize();
+        GUI.Label(SetRectSize(indent), $"{parameterName}: " + parameter, CheckGUIStyle());
     }
 
     private GUIStyle CheckGUIStyle()
@@ -41,9 +27,8 @@ public class ParametersInfo: MonoBehaviour
         return myStyle;
     }    
 
-    private void DebugRectSize()
+    private Rect SetRectSize(int indent)
     {
-        print(_rectSize);
-    }
-
+        return new Rect(0, indent, 300, 100);
+    }    
 }

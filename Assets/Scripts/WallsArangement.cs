@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class WallsArangement : MonoBehaviour
 {
-    const float Size_x = 13.24f;
+    private const float Size_x = 13.24f;
 
-    [SerializeField] private float horizontalOffset = 0.5f;
-    [SerializeField] private float verticalOffset = 2f;
-    [SerializeField] private float floorOffset = 10f;
+    [SerializeField] private readonly float horizontalOffset = 0.5f;
+    [SerializeField] private readonly float verticalOffset = 2f;
+    [SerializeField] private readonly float floorOffset = 10f;
 
     [SerializeField] private Transform _upperWall;
     [SerializeField] private Transform _lowerWall;

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Debbuger : MonoBehaviour
 {
-    [SerializeField] private InputField inputField;
+    [SerializeField] private readonly InputField inputField;
 
     public void ChangeMoveForce()
     {
@@ -19,6 +19,11 @@ public class Debbuger : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(0);
+        SetStartParameters();
+    }
+
+    private void SetStartParameters()
+    {
         Shaking.Torque = 5000f;
         Shaking.MoveForce = 20000f;
     }
