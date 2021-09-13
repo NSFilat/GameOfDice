@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class SettingsManager : MonoBehaviour
 {
-    public static float fps;
-
-    void Awake()
+    private void Awake()
     {
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 60;
+        SetFrameRate();
 
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
+
+    private void SetFrameRate()
+    {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+    }
+
+    
 }

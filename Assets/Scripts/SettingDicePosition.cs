@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class SettingDicePosition : MonoBehaviour
 {
-    public GameObject floor;
+    [SerializeField] private GameObject _floor;
+
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject == floor)
+        if (collision.gameObject == _floor)
         {
-            transform.position = new Vector3(0f, transform.position.y, 0f);
-            transform.rotation = Quaternion.identity;
-            gameObject.AddComponent<Shaking>();
-            Destroy(gameObject.GetComponent<SettingDicePosition>());
+            SetStartPosition();
+            ReplaceScripts();
         }
+    }
+
+    private void SetStartPosition()
+    {
+        transform.position = new Vector3(0f, transform.position.y, 0f);
+        transform.rotation = Quaternion.identity;
+    }
+
+    private void ReplaceScripts()
+    {
+        gameObject.AddComponent<Shaking>();
+        Destroy(gameObject.GetComponent<SettingDicePosition>());
     }
 }
