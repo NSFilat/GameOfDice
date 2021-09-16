@@ -5,7 +5,7 @@ using UnityEngine;
 public class WallsArangement : MonoBehaviour
 {
     private const float Size_x = 13.24f;
-    private const float Square = 921600;
+    private const float Square = 49.30245f;
 
     [SerializeField] private readonly float horizontalOffset = 0.5f;
     [SerializeField] private readonly float verticalOffset = 2f;
@@ -24,7 +24,7 @@ public class WallsArangement : MonoBehaviour
         int width = Screen.width;
         int height = Screen.height;
 
-        Debug.Log($"{width} + {height}");
+        //Debug.Log($"{width} + {height}");
 
         int GCD = FindGCD(width, height);
 
@@ -41,7 +41,7 @@ public class WallsArangement : MonoBehaviour
 
         _floor.localScale = new Vector3((Mathf.Abs(_upperWall.position.x) * 2 + 1) / floorOffset, 1, (Mathf.Abs(_rightWall.position.z) * 2 + 1) / floorOffset);
         
-        float scale = 70 * Screen.width * Screen.height / Square;
+        float scale = 70 * position_z * Size_x / Square;
         _dice.localScale = new Vector3(scale, scale, scale);
 
         Debug.Log(_dice.localScale);

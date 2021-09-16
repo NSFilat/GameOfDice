@@ -128,6 +128,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3741693547505944851, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
   m_PrefabInstance: {fileID: 770001727651127662}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &19801648 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8841440603915709316, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
+  m_PrefabInstance: {fileID: 770001727651127662}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &19801649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,6 +655,7 @@ MonoBehaviour:
   _rightWall: {fileID: 812058565}
   _leftWall: {fileID: 709682696}
   _floor: {fileID: 1276561433}
+  _dice: {fileID: 19801648}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
