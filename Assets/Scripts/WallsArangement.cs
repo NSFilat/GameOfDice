@@ -44,7 +44,7 @@ public class WallsArangement : MonoBehaviour
         float scale = 70 * position_z * Size_x / Square;
         _dice.localScale = new Vector3(scale, scale, scale);
 
-        Debug.Log(_dice.localScale);
+        //Debug.Log(_dice.localScale);
     }
 
     private void DefineSize(int width, int height, out float position_z)
