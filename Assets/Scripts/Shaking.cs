@@ -48,7 +48,7 @@ public class Shaking : MonoBehaviour
 
         while (!IsMoved)
         {
-            ChangeVelocity(x_prev_for_velocity, z_prev_for_velocity);
+            velocity = ChangeVelocity(x_prev_for_velocity, z_prev_for_velocity);
             if (velocity > _begin_speed)
             {
                 ChangeForce(ref x_prev, ref z_prev);
@@ -61,11 +61,12 @@ public class Shaking : MonoBehaviour
 
         while (IsMoved)
         {
-            ChangeVelocity(x_prev_for_velocity, z_prev_for_velocity);
+            velocity = ChangeVelocity(x_prev_for_velocity, z_prev_for_velocity);
             ChangeForce(ref x_prev, ref z_prev);
 
             if (velocity < _end_speed)
             {
+                if(!gameObject.GetComponent<MovementCompletition>()) gameObject.AddComponent<MovementCompletition>();
                 IsMoved = !IsMoved;
             }
 
@@ -84,12 +85,11 @@ public class Shaking : MonoBehaviour
         z_prev_for_velocity = Input.acceleration.z;
     }
 
-    private double ChangeVelocity(float x_prev_for_velocity, float z_prev_for_velocity)
+    static internal double ChangeVelocity(float x_prev_for_velocity, float z_prev_for_velocity)
     {
         return Mathf.Sqrt(Mathf.Pow((Input.acceleration.x - x_prev_for_velocity), 2) + Mathf.Pow((Input.acceleration.z - z_prev_for_velocity), 2)) / 0.02;
     }
     
-
     private void ChangeForce(ref float x_prev, ref float z_prev)
     {
         if (Mathf.Abs(Input.acceleration.x - x_prev) < 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) < 0.5f)

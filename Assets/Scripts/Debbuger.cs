@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Debbuger : MonoBehaviour
 {
-    [SerializeField] private readonly InputField inputField;
+    [SerializeField] private InputField inputField;
 
     public void ChangeMoveForce()
     {

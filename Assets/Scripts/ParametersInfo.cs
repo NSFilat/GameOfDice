@@ -10,7 +10,7 @@ public class ParametersInfo: MonoBehaviour
     {
         fps = 1.0f / Time.deltaTime;
 
-        PrintParameter("FPS", fps, 0);
+        PrintParameter("FPS", (int)fps, 0);
         PrintParameter("Torque", Shaking.Torque, 40);
         PrintParameter("JumpForce", Shaking.MoveForce, 80);
     }

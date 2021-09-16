@@ -6,7 +6,7 @@ public class SettingDicePosition : MonoBehaviour
 {
     [SerializeField] private GameObject _floor;
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject == _floor)
         {
