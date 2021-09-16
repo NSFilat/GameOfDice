@@ -140,10 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b60e3a616f5da749928e3ef2a3e7ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upperWall: {fileID: 1723253866}
-  _lowerWall: {fileID: 1842183428}
-  _rightWall: {fileID: 1702302167}
-  _leftWall: {fileID: 1276698028}
 --- !u!114 &19801650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1309,11 +1305,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0.253, y: 0, z: 0}
---- !u!1 &1276698028 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5585467714810833247, guid: a69a3d116cc2e4749ae46fe41a3c5356, type: 3}
-  m_PrefabInstance: {fileID: 709682695}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1282322678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,21 +1979,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5585467714810833243, guid: a69a3d116cc2e4749ae46fe41a3c5356, type: 3}
   m_PrefabInstance: {fileID: 1598090202}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1702302167 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5585467714810833247, guid: a69a3d116cc2e4749ae46fe41a3c5356, type: 3}
-  m_PrefabInstance: {fileID: 812058564}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1723253866 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5585467714810833247, guid: a69a3d116cc2e4749ae46fe41a3c5356, type: 3}
-  m_PrefabInstance: {fileID: 1326936262}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1842183428 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5585467714810833247, guid: a69a3d116cc2e4749ae46fe41a3c5356, type: 3}
-  m_PrefabInstance: {fileID: 1598090202}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1985544424
 GameObject:
   m_ObjectHideFlags: 0
@@ -2276,11 +2252,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 770001727659218064, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
       propertyPath: m_Interpolate
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 770001727659218064, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
       propertyPath: m_CollisionDetection
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 770001727659218068, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
       propertyPath: m_Convex
