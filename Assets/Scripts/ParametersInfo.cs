@@ -4,35 +4,36 @@ using UnityEngine;
 
 public class ParametersInfo: MonoBehaviour
 {
-    static internal Dictionary<string, int> _parameters = new Dictionary<string, int>();
+    private Dictionary<string, int> _parameters = new Dictionary<string, int>();
     private GUIStyle myStyle = new GUIStyle();
     
-    static private int _indent = -40;
+    static private int s_indent;
 
-    internal static int Indent { set { _indent = value; } get { return _indent; } }
+    public static int Indent { set { s_indent = value; } get { return s_indent; } }
 
     private void Start()
     {
-        myStyle.fontSize = 40;    
+        myStyle.fontSize = 40;
+        s_indent = -40;
     }
 
     private void OnGUI()
     {
         PrintParameter("FPS", GetFPS());
         PrintParameter("Torque", Shaking.Torque);
-        PrintParameter("JumpForce", Shaking.MoveForce);
+        PrintParameter("MoveForce", Shaking.MoveForce);
     }
 
     private void PrintParameter(string parameterName, object parameter)
     {
-        if ((WasParameter(parameterName)))
+        if (WasParameter(parameterName))
         {
             GUI.Label(SetRectSize(_parameters[parameterName]), $"{parameterName}: " + parameter, myStyle);
         }
         else 
         {
-            _indent += 40;
-            _parameters.Add(parameterName, _indent);
+            s_indent += 40;
+            _parameters.Add(parameterName, s_indent);
         }
     }
 

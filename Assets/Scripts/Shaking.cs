@@ -7,13 +7,13 @@ public class Shaking : MonoBehaviour
     private Rigidbody _diceRigidbody;
     private Vector3 default_position;
 
-    [SerializeField] private static float _torque = 5000f;
-    [SerializeField] private static float _moveForce = 20000f;
+    [SerializeField] private static float s_torque = 5000f;
+    [SerializeField] private static float s_moveForce = 20000f;
     [SerializeField] private readonly float _begin_speed = 15f;
     [SerializeField] private readonly float _end_speed = 1f;
 
-    internal static float Torque { set { _torque = value; } get { return _torque; } }
-    internal static float MoveForce { set { _moveForce = value; } get { return _moveForce; } }
+    public static float Torque { set { s_torque = value; } get { return s_torque; } }
+    public static float MoveForce { set { s_moveForce = value; } get { return s_moveForce; } }
 
     private void Start()
     {
