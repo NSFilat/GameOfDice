@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44658208, g: 0.4964187, b: 0.5748189, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465835, g: 0.4964198, b: 0.5748218, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -128,11 +128,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3741693547505944851, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
   m_PrefabInstance: {fileID: 770001727651127662}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &19801648 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8841440603915709316, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
-  m_PrefabInstance: {fileID: 770001727651127662}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &19801649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +153,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _floor: {fileID: 1276561429}
+--- !u!114 &19801651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19801643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f508f8767641fd4da01098959c455ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &146540157
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,7 +662,6 @@ MonoBehaviour:
   _rightWall: {fileID: 812058565}
   _leftWall: {fileID: 709682696}
   _floor: {fileID: 1276561433}
-  _dice: {fileID: 19801648}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,7 +1446,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1295254697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a4ef33f2b3148f4e9e0d1f81592a270, type: 3}
+  m_Script: {fileID: 11500000, guid: d9f0516464dfc074ea2d6f9c920673f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 1295254700}
@@ -1499,7 +1505,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1295254699}
-        m_TargetAssemblyTypeName: ChangingAllForces, Assembly-CSharp
+        m_TargetAssemblyTypeName: ChangingParametersGUI, Assembly-CSharp
         m_MethodName: ChangeMoveForce
         m_Mode: 1
         m_Arguments:
@@ -1821,7 +1827,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1442023243}
-        m_TargetAssemblyTypeName: RestartScene, Assembly-CSharp
+        m_TargetAssemblyTypeName: ChangingParametersGUI, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
@@ -1879,7 +1885,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1442023238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a4ef33f2b3148f4e9e0d1f81592a270, type: 3}
+  m_Script: {fileID: 11500000, guid: d9f0516464dfc074ea2d6f9c920673f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 0}
@@ -2081,7 +2087,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1985544429}
-        m_TargetAssemblyTypeName: Debbuger, Assembly-CSharp
+        m_TargetAssemblyTypeName: ChangingParametersGUI, Assembly-CSharp
         m_MethodName: ChangeTorque
         m_Mode: 1
         m_Arguments:
@@ -2150,7 +2156,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1985544424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a4ef33f2b3148f4e9e0d1f81592a270, type: 3}
+  m_Script: {fileID: 11500000, guid: d9f0516464dfc074ea2d6f9c920673f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 1985544426}

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ScalingDice : MonoBehaviour
-{
-    [SerializeField] private Transform _dice;
+{   
+    private Transform _dice;
 
     private void Start()
     {
-        ChangeDiceScale(float position_z);
+        _dice = GetComponent<Transform>();
+        ChangeDiceScale(ResolutionManager.DefineSize());
     }
 
     private void ChangeDiceScale(float position_z)

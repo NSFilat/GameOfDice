@@ -14,10 +14,9 @@ public class WallsArangement : MonoBehaviour
     [SerializeField] private Transform _leftWall;
     [SerializeField] private Transform _floor;
 
-
     private void Start()
     {
-        ChangeWallsPosition(ResolutionManager.DefineSize(ResolutionManager.Width, ResolutionManager.Height));
+        ChangeWallsPosition(ResolutionManager.DefineSize());
     }
 
     private void ChangeWallsPosition(float position_z)

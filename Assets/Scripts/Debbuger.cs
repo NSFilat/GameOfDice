@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class Debbuger : MonoBehaviour
+public class Debbuger
 {
     static public void SetStartParameters()
     {
