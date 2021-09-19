@@ -20,11 +20,17 @@ public class Debbuger : MonoBehaviour
     {
         SceneManager.LoadScene(0);
         SetStartParameters();
+        SetStartGUIParameters();
     }
 
     private void SetStartParameters()
     {
         Shaking.Torque = 5000f;
         Shaking.MoveForce = 20000f;
+    }
+
+    private void SetStartGUIParameters()
+    {
+        ParametersInfo.Indent = -40;
     }
 }

@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class ParametersInfo: MonoBehaviour
 {
-    Dictionary<string, int> _parameters = new Dictionary<string, int>();
-    static int indent = -40;
+    static internal Dictionary<string, int> _parameters = new Dictionary<string, int>();
+    private GUIStyle myStyle = new GUIStyle();
+    
+    static private int _indent = -40;
+
+    internal static int Indent { set { _indent = value; } get { return _indent; } }
+
+    private void Start()
+    {
+        myStyle.fontSize = 40;    
+    }
 
     private void OnGUI()
     {
@@ -18,26 +27,19 @@ public class ParametersInfo: MonoBehaviour
     {
         if ((WasParameter(parameterName)))
         {
-            GUI.Label(SetRectSize(_parameters[parameterName]), $"{parameterName}: " + parameter, CheckGUIStyle());
+            GUI.Label(SetRectSize(_parameters[parameterName]), $"{parameterName}: " + parameter, myStyle);
         }
         else 
         {
-            indent += 40;
-            _parameters.Add(parameterName, indent);
+            _indent += 40;
+            _parameters.Add(parameterName, _indent);
         }
     }
 
     private bool WasParameter(string parameterName)
     {
         return _parameters.ContainsKey(parameterName);
-    }
-
-    private GUIStyle CheckGUIStyle()
-    {
-        GUIStyle myStyle = new GUIStyle();
-        myStyle.fontSize = 40;
-        return myStyle;
-    }    
+    }   
 
     private Rect SetRectSize(int indent)
     {
