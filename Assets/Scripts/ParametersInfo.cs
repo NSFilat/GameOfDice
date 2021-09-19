@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class ParametersInfo: MonoBehaviour
 {
-    private float fps;
-
-    void OnGUI()
+    private void OnGUI()
     {
-        fps = 1.0f / Time.deltaTime;
-
-        PrintParameter("FPS", (int)fps, 0);
+        PrintParameter("FPS", GetFPS(), 0);
         PrintParameter("Torque", Shaking.Torque, 40);
         PrintParameter("JumpForce", Shaking.MoveForce, 80);
     }
@@ -31,4 +27,9 @@ public class ParametersInfo: MonoBehaviour
     {
         return new Rect(0, indent, 300, 100);
     }    
+
+    private int GetFPS()
+    {
+        return (int)(1.0f / Time.deltaTime);
+    }
 }

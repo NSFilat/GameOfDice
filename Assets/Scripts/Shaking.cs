@@ -73,10 +73,7 @@ public class Shaking : MonoBehaviour
             ChangeVelocityCoodinates(ref x_prev_for_velocity, ref z_prev_for_velocity);
             yield return null;
         }
-
-        //Debug.Log("---------------");
         StartCoroutine(PreparationCoroutine());
-        //StartCoroutine(ShakingCoroutine());
     }
 
     private void ChangeVelocityCoodinates(ref float x_prev_for_velocity, ref float z_prev_for_velocity)
@@ -96,7 +93,7 @@ public class Shaking : MonoBehaviour
         {
             _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (MoveForce - 100) * Time.deltaTime);
             _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque * Time.deltaTime);
-            //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
+
             x_prev = Input.acceleration.x;
             z_prev = Input.acceleration.z;
         }
@@ -104,7 +101,6 @@ public class Shaking : MonoBehaviour
         {
             _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * MoveForce * Time.deltaTime);
             _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque * Time.deltaTime);
-            //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
         }
     }
 }
