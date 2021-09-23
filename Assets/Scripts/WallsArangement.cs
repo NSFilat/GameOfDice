@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WallsArangement : MonoBehaviour
 {
-    [SerializeField] private readonly float _horizontalOffset = 0.5f;
-    [SerializeField] private readonly float _verticalOffset = 2f;
+    [SerializeField] private readonly float _horizontalOffset = 2f;
+    [SerializeField] private readonly float _verticalOffset = 8f;
 
     [SerializeField] private Transform _upperWall;
     [SerializeField] private Transform _lowerWall;
