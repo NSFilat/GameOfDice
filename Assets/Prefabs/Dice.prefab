@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4972008214858893274}
   - component: {fileID: 770001727659218064}
   - component: {fileID: 770001727659218068}
-  - component: {fileID: 770001727659218071}
   m_Layer: 0
   m_Name: Dice
   m_TagString: Untagged
@@ -115,16 +114,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 9b2511d03f2a6f54ca0d4f97e2d2b611, type: 2}
---- !u!114 &770001727659218071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3741693547505944851}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb29d411832d985479bb791ed7c7a7a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 100
