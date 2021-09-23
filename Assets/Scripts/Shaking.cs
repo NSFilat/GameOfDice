@@ -5,21 +5,23 @@ using UnityEngine;
 public class Shaking : MonoBehaviour
 {
     private Rigidbody _diceRigidbody;
-    private Vector3 default_position;
+    private Vector3 _defaultPosition;
 
-    [SerializeField] private static float _torque = 5000f;
-    [SerializeField] private static float _moveForce = 20000f;
+    private bool IsMoved = true;
+
+    [SerializeField] private static float s_torque = 5000f;
+    [SerializeField] private static float s_moveForce = 20000f;
     [SerializeField] private readonly float _begin_speed = 15f;
     [SerializeField] private readonly float _end_speed = 1f;
 
-    internal static float Torque { set { _torque = value; } get { return _torque; } }
-    internal static float MoveForce { set { _moveForce = value; } get { return _moveForce; } }
+    public static float Torque { set { s_torque = value; } get { return s_torque; } }
+    public static float MoveForce { set { s_moveForce = value; } get { return s_moveForce; } }
 
     private void Start()
     {
         _diceRigidbody = GetComponent<Rigidbody>();
         _diceRigidbody.maxAngularVelocity = 50;
-        StartCoroutine(PreparationCoroutine());    
+        StartCoroutine(PreparationCoroutine());
     }
 
     IEnumerator PreparationCoroutine()
@@ -29,27 +31,23 @@ public class Shaking : MonoBehaviour
             yield return null;
         }
 
-        default_position = Input.acceleration;
+        _defaultPosition = Input.acceleration;
         StartCoroutine(ShakingCoroutine());
     }
-
-    bool IsMoved = true;
-    double velocity = 0;
 
     IEnumerator ShakingCoroutine()
     {
         IsMoved = false;
 
-        float x_prev = default_position.x;
-        float z_prev = default_position.z;
+        float x_prev = _defaultPosition.x;
+        float z_prev = _defaultPosition.z;
 
-        float x_prev_for_velocity = default_position.x;
-        float z_prev_for_velocity = default_position.z;
+        float x_prev_for_velocity = _defaultPosition.x;
+        float z_prev_for_velocity = _defaultPosition.z;
 
         while (!IsMoved)
         {
-            velocity = ChangeVelocity(x_prev_for_velocity, z_prev_for_velocity);
-            if (velocity > _begin_speed)
+            if (GetVelocity(x_prev_for_velocity, z_prev_for_velocity) > _begin_speed)
             {
                 ChangeForce(ref x_prev, ref z_prev);
                 IsMoved = !IsMoved;
@@ -61,22 +59,26 @@ public class Shaking : MonoBehaviour
 
         while (IsMoved)
         {
-            velocity = ChangeVelocity(x_prev_for_velocity, z_prev_for_velocity);
             ChangeForce(ref x_prev, ref z_prev);
 
-            if (velocity < _end_speed)
+            if (GetVelocity(x_prev_for_velocity, z_prev_for_velocity) < _end_speed)
             {
-                if(!gameObject.GetComponent<MovementCompletition>()) gameObject.AddComponent<MovementCompletition>();
+                if (!gameObject.GetComponent<MovementCompletition>())
+                {
+                    gameObject.AddComponent<MovementCompletition>();
+                }
                 IsMoved = !IsMoved;
             }
 
             ChangeVelocityCoodinates(ref x_prev_for_velocity, ref z_prev_for_velocity);
             yield return null;
         }
-
-        //Debug.Log("---------------");
         StartCoroutine(PreparationCoroutine());
-        //StartCoroutine(ShakingCoroutine());
+    }
+
+    static private double GetVelocity(float x_prev_for_velocity, float z_prev_for_velocity)
+    {
+        return Mathf.Sqrt(Mathf.Pow((Input.acceleration.x - x_prev_for_velocity), 2) + Mathf.Pow((Input.acceleration.z - z_prev_for_velocity), 2)) / 0.02;
     }
 
     private void ChangeVelocityCoodinates(ref float x_prev_for_velocity, ref float z_prev_for_velocity)
@@ -85,26 +87,30 @@ public class Shaking : MonoBehaviour
         z_prev_for_velocity = Input.acceleration.z;
     }
 
-    static internal double ChangeVelocity(float x_prev_for_velocity, float z_prev_for_velocity)
-    {
-        return Mathf.Sqrt(Mathf.Pow((Input.acceleration.x - x_prev_for_velocity), 2) + Mathf.Pow((Input.acceleration.z - z_prev_for_velocity), 2)) / 0.02;
-    }
-    
     private void ChangeForce(ref float x_prev, ref float z_prev)
     {
-        if (Mathf.Abs(Input.acceleration.x - x_prev) < 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) < 0.5f)
+        if (GetOffsetX(x_prev) < 0.5f || GetOffsetZ(z_prev) < 0.5f)
         {
             _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (MoveForce - 100) * Time.deltaTime);
             _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque * Time.deltaTime);
-            //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (jumpForce - 100));
+
             x_prev = Input.acceleration.x;
             z_prev = Input.acceleration.z;
         }
-        else if (Mathf.Abs(Input.acceleration.x - x_prev) > 0.5f || Mathf.Abs(Input.acceleration.z - z_prev) > 0.5f)
+        else if (GetOffsetX(x_prev) > 0.5f || GetOffsetZ(z_prev) > 0.5f)
         {
             _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * MoveForce * Time.deltaTime);
             _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque * Time.deltaTime);
-            //_diceRigidbody.AddTorque(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * jumpForce);
         }
+    }
+
+    private float GetOffsetX(float x_prev)
+    {
+        return Mathf.Abs(Input.acceleration.x - x_prev);
+    }
+
+    private float GetOffsetZ(float z_prev)
+    {
+        return Mathf.Abs(Input.acceleration.z - z_prev);
     }
 }

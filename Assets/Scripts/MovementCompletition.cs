@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class MovementCompletition : MonoBehaviour
 {
+    private readonly float _reboundForce = 400f;
+
     private void OnCollisionStay(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Wall") && GetComponent<Rigidbody>().velocity.magnitude < 1)
+        if (IsWall(collision) && IsLowVelocity())
         {
-            GetComponent<Rigidbody>().AddForce(400, 400, 400);
-            //Shaking.Torque = -1;
+            GetComponent<Rigidbody>().AddForce(_reboundForce, _reboundForce, _reboundForce);
             Destroy(gameObject.GetComponent<MovementCompletition>());
         }
+    }
+
+    private bool IsWall(Collision collision)
+    {
+        return collision.gameObject.CompareTag("Wall");
+    }
+
+    private bool IsLowVelocity()
+    {
+        return GetComponent<Rigidbody>().velocity.magnitude < 1;
     }
 }
