@@ -9,8 +9,9 @@ public class Shaking : MonoBehaviour
 
     private bool IsMoved = true;
 
-    [SerializeField] private static float s_torque = 5000f;
-    [SerializeField] private static float s_moveForce = 20000f;
+    [SerializeField] private static float s_torque = 6000f;
+    [SerializeField] private static float s_moveForce = 25000f;
+    [SerializeField] private readonly float _maxSpeed = 50f;
     [SerializeField] private readonly float _begin_speed = 15f;
     [SerializeField] private readonly float _end_speed = 1f;
 
@@ -93,7 +94,7 @@ public class Shaking : MonoBehaviour
         {
             _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (MoveForce - 100) * Time.deltaTime);         
             _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque * Time.deltaTime);
-            _diceRigidbody.velocity = Vector3.ClampMagnitude(_diceRigidbody.velocity, 30f);
+            _diceRigidbody.velocity = Vector3.ClampMagnitude(_diceRigidbody.velocity, _maxSpeed);
 
             x_prev = Input.acceleration.x;
             z_prev = Input.acceleration.z;
@@ -102,7 +103,7 @@ public class Shaking : MonoBehaviour
         {
             _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * MoveForce * Time.deltaTime);
             _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque * Time.deltaTime);
-            _diceRigidbody.velocity = Vector3.ClampMagnitude(_diceRigidbody.velocity, 30f);
+            _diceRigidbody.velocity = Vector3.ClampMagnitude(_diceRigidbody.velocity, _maxSpeed);
         }
     }
 
