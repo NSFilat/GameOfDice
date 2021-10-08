@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ParametersInfo : MonoBehaviour
 {
+    [SerializeField] private Rigidbody _diceRigidbody;
+    private float _maxSpeed = 0;
+
     private Dictionary<string, int> _parameters = new Dictionary<string, int>();
     private GUIStyle myStyle = new GUIStyle();
 
@@ -22,6 +25,17 @@ public class ParametersInfo : MonoBehaviour
         PrintParameter("FPS", GetFPS());
         PrintParameter("Torque", Shaking.Torque);
         PrintParameter("MoveForce", Shaking.MoveForce);
+        PrintParameter("MaxSpeed", GetMaxSpeed());
+    }
+
+    private float GetMaxSpeed()
+    {
+        if (_diceRigidbody.velocity.magnitude > _maxSpeed)
+        {
+            _maxSpeed = _diceRigidbody.velocity.magnitude;
+        }
+
+        return _maxSpeed;
     }
 
     private void PrintParameter(string parameterName, object parameter)

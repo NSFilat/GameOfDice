@@ -91,8 +91,9 @@ public class Shaking : MonoBehaviour
     {
         if (GetOffsetX(x_prev) < 0.5f || GetOffsetZ(z_prev) < 0.5f)
         {
-            _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (MoveForce - 100) * Time.deltaTime);
+            _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * (MoveForce - 100) * Time.deltaTime);         
             _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque * Time.deltaTime);
+            _diceRigidbody.velocity = Vector3.ClampMagnitude(_diceRigidbody.velocity, 30f);
 
             x_prev = Input.acceleration.x;
             z_prev = Input.acceleration.z;
@@ -101,6 +102,7 @@ public class Shaking : MonoBehaviour
         {
             _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * MoveForce * Time.deltaTime);
             _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque * Time.deltaTime);
+            _diceRigidbody.velocity = Vector3.ClampMagnitude(_diceRigidbody.velocity, 30f);
         }
     }
 
