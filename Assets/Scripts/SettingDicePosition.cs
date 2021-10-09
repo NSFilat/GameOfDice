@@ -5,6 +5,9 @@ using UnityEngine;
 public class SettingDicePosition : MonoBehaviour
 {
     [SerializeField] private GameObject _floor;
+    static private float s_diceStartPosition = 0;
+
+    static public float DiceStartPosition { set { s_diceStartPosition = value; } get { return s_diceStartPosition; } }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -17,7 +20,8 @@ public class SettingDicePosition : MonoBehaviour
 
     private void SetStartPosition()
     {
-        transform.position = new Vector3(0f, transform.position.y, 0f);
+        s_diceStartPosition = transform.position.y;
+        transform.position = new Vector3(0f, s_diceStartPosition, 0f);
         transform.rotation = Quaternion.identity;
     }
 
