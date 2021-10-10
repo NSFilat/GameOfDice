@@ -26,6 +26,7 @@ public class ParametersInfo : MonoBehaviour
         PrintParameter("Torque", Shaking.Torque);
         PrintParameter("MoveForce", Shaking.MoveForce);
         PrintParameter("MaxSpeed", GetMaxSpeed());
+        PrintParameter("InputAccel", Input.acceleration);
     }
 
     private float GetMaxSpeed()
