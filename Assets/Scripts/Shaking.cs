@@ -6,8 +6,10 @@ public class Shaking : MonoBehaviour
 {
     private Rigidbody _diceRigidbody;
     private Vector3 _defaultPosition;
+    private AudioSource DiceStartSound;
 
-    private bool IsMoved = true;
+    public static bool IsMoved = true;
+    public static bool WasStart = false;
 
     [SerializeField] private static float s_torque = 6000f;
     [SerializeField] private static float s_moveForce = 25000f;
@@ -22,6 +24,7 @@ public class Shaking : MonoBehaviour
     {
         _diceRigidbody = GetComponent<Rigidbody>();
         _diceRigidbody.maxAngularVelocity = 50;
+        DiceStartSound = GetComponentInChildren<AudioSource>();
 
         StartCoroutine(PreparationCoroutine());
     }
@@ -56,6 +59,8 @@ public class Shaking : MonoBehaviour
             yield return null;
         }
 
+        DiceStartSound.Play();
+
         while (IsMoved)
         {
             ChangeForce();
@@ -72,6 +77,9 @@ public class Shaking : MonoBehaviour
             ChangeVelocityCoodinates(ref x_prev_for_velocity, ref z_prev_for_velocity);
             yield return null;
         }
+
+        DiceStartSound.Play();
+
         StartCoroutine(PreparationCoroutine());
     }
 
