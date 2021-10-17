@@ -22,6 +22,7 @@ public class Shaking : MonoBehaviour
     {
         _diceRigidbody = GetComponent<Rigidbody>();
         _diceRigidbody.maxAngularVelocity = 50;
+
         StartCoroutine(PreparationCoroutine());
     }
 
@@ -40,9 +41,6 @@ public class Shaking : MonoBehaviour
     {
         IsMoved = false;
 
-        float x_prev = _defaultPosition.x;
-        float z_prev = _defaultPosition.z;
-
         float x_prev_for_velocity = _defaultPosition.x;
         float z_prev_for_velocity = _defaultPosition.z;
 
@@ -50,7 +48,7 @@ public class Shaking : MonoBehaviour
         {
             if (GetVelocity(x_prev_for_velocity, z_prev_for_velocity) > _begin_speed)
             {
-                ChangeForce(ref x_prev, ref z_prev);
+                ChangeForce();
                 IsMoved = !IsMoved;
             }
 
@@ -60,7 +58,7 @@ public class Shaking : MonoBehaviour
 
         while (IsMoved)
         {
-            ChangeForce(ref x_prev, ref z_prev);
+            ChangeForce();
 
             if (GetVelocity(x_prev_for_velocity, z_prev_for_velocity) < _end_speed)
             {
@@ -88,39 +86,10 @@ public class Shaking : MonoBehaviour
         z_prev_for_velocity = Input.acceleration.z;
     }
 
-    //private void ChangeForce(ref float x_prev, ref float z_prev)
-    //{
-    //    if (GetOffsetX(x_prev) < 0.5f || GetOffsetZ(z_prev) < 0.5f)
-    //    {
-    //        _diceRigidbody.AddForce(new Vector3(Input.acceleration.z, 0f, Input.acceleration.x) * MoveForce * Time.deltaTime);         
-    //        _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque * Time.deltaTime);
-    //        _diceRigidbody.velocity = Vector3.ClampMagnitude(_diceRigidbody.velocity, _maxSpeed);
-
-    //        x_prev = Input.acceleration.x;
-    //        z_prev = Input.acceleration.z;
-    //    }
-    //    else if (GetOffsetX(x_prev) > 0.5f || GetOffsetZ(z_prev) > 0.5f)
-    //    {
-    //        _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - z_prev, 0f, Input.acceleration.x - x_prev) * MoveForce * Time.deltaTime);
-    //        _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque * Time.deltaTime);
-    //        _diceRigidbody.velocity = Vector3.ClampMagnitude(_diceRigidbody.velocity, _maxSpeed);
-    //    }
-    //}
-
-    private void ChangeForce(ref float x_prev, ref float z_prev)
+    private void ChangeForce()
     {
         _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - _defaultPosition.z, 0f, Input.acceleration.x - _defaultPosition.x) * MoveForce * Time.deltaTime);
         _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque * Time.deltaTime);
         _diceRigidbody.velocity = Vector3.ClampMagnitude(_diceRigidbody.velocity, _maxSpeed);
-    }
-    
-    private float GetOffsetX(float x_prev)
-    {
-        return Mathf.Abs(Input.acceleration.x - x_prev);
-    }
-
-    private float GetOffsetZ(float z_prev)
-    {
-        return Mathf.Abs(Input.acceleration.z - z_prev);
     }
 }

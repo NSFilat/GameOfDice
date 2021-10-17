@@ -9,7 +9,7 @@ public class ScalingFloor : MonoBehaviour
     [SerializeField] private Transform _upperWall;
     [SerializeField] private Transform _rightWall;
 
-    [SerializeField] private readonly float _floorOffset = 10f;
+    private readonly float _floorOffset = 10f;
 
     void Start()
     {

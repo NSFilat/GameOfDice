@@ -19,7 +19,7 @@ public class WallsArangement : MonoBehaviour
 
     private void ChangeWallsPosition(float position_z)
     {
-        _leftWall.position = new Vector3(_leftWall.position.x, 0, -position_z - _horizontalOffset);
+        _leftWall.position  = new Vector3(_leftWall.position.x, 0, -position_z - _horizontalOffset);
         _rightWall.position = new Vector3(_rightWall.position.x, 0, position_z + _horizontalOffset);
 
         _upperWall.localScale = new Vector3(_upperWall.localScale.x, _upperWall.localScale.y, position_z * 2 + _verticalOffset);
