@@ -50,18 +50,18 @@ public class Shaking : MonoBehaviour
         IsMoved = false;
 
         float x_prev_for_velocity = _defaultPosition.x;
-        float y_prev_for_velocity = _defaultPosition.y;
+        //float y_prev_for_velocity = _defaultPosition.y;
         float z_prev_for_velocity = _defaultPosition.z;
         
         while (!IsMoved)
         {
-            if (GetVelocity(x_prev_for_velocity, y_prev_for_velocity, z_prev_for_velocity) > _begin_speed)
+            if (GetVelocity(x_prev_for_velocity, z_prev_for_velocity) > _begin_speed)
             {
                 ChangeForce();
                 IsMoved = !IsMoved;
             }
 
-            ChangeVelocityCoodinates(ref x_prev_for_velocity, ref y_prev_for_velocity, ref z_prev_for_velocity);
+            ChangeVelocityCoodinates(ref x_prev_for_velocity, /*ref y_prev_for_velocity,*/ ref z_prev_for_velocity);
             yield return null;
         }
 
@@ -69,7 +69,7 @@ public class Shaking : MonoBehaviour
         {
             ChangeForce();
 
-            if (GetVelocity(x_prev_for_velocity, y_prev_for_velocity, z_prev_for_velocity) < _end_speed && _diceRigidbody.velocity.magnitude < 15)
+            if (GetVelocity(x_prev_for_velocity, z_prev_for_velocity) < _end_speed && _diceRigidbody.velocity.magnitude < 7)
             {
                 _defaultPosition = Input.acceleration;
                 if (_diceRigidbody.velocity.magnitude < _end_speed)
@@ -82,23 +82,23 @@ public class Shaking : MonoBehaviour
                 }
             }
 
-            ChangeVelocityCoodinates(ref x_prev_for_velocity, ref y_prev_for_velocity, ref z_prev_for_velocity); 
+            ChangeVelocityCoodinates(ref x_prev_for_velocity, /*ref y_prev_for_velocity,*/ ref z_prev_for_velocity); 
             yield return null;
         }
 
         StartCoroutine(PreparationCoroutine());
     }
 
-    static private double GetVelocity(float x_prev_for_velocity, float y_prev_for_velocity, float z_prev_for_velocity)
+    static private double GetVelocity(float x_prev_for_velocity, /*float y_prev_for_velocity,*/ float z_prev_for_velocity)
     {
-        return AccelVelocity = Mathf.Sqrt(Mathf.Pow(Input.acceleration.x - x_prev_for_velocity, 2) + Mathf.Pow(Input.acceleration.y - y_prev_for_velocity, 2) +
+        return AccelVelocity = Mathf.Sqrt(Mathf.Pow(Input.acceleration.x - x_prev_for_velocity, 2) + /*Mathf.Pow(Input.acceleration.y - y_prev_for_velocity, 2)*/ +
             Mathf.Pow(Input.acceleration.z - z_prev_for_velocity, 2)) / 0.02;
     }
 
-    private void ChangeVelocityCoodinates(ref float x_prev_for_velocity, ref float y_prev_for_velocity, ref float z_prev_for_velocity)
+    private void ChangeVelocityCoodinates(ref float x_prev_for_velocity, /*ref float y_prev_for_velocity,*/ ref float z_prev_for_velocity)
     {
         x_prev_for_velocity = Input.acceleration.x;
-        y_prev_for_velocity = Input.acceleration.y;
+       // y_prev_for_velocity = Input.acceleration.y;
         z_prev_for_velocity = Input.acceleration.z;
     }
 
