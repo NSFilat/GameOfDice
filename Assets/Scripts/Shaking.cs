@@ -69,13 +69,17 @@ public class Shaking : MonoBehaviour
         {
             ChangeForce();
 
-            if (GetVelocity(x_prev_for_velocity, y_prev_for_velocity, z_prev_for_velocity) < _end_speed && _diceRigidbody.velocity.magnitude < _end_speed)
+            if (GetVelocity(x_prev_for_velocity, y_prev_for_velocity, z_prev_for_velocity) < _end_speed && _diceRigidbody.velocity.magnitude < 15)
             {
-                if (!gameObject.GetComponent<MovementCompletition>())
+                _defaultPosition = Input.acceleration;
+                if (_diceRigidbody.velocity.magnitude < _end_speed)
                 {
-                    gameObject.AddComponent<MovementCompletition>();
+                    if (!gameObject.GetComponent<MovementCompletition>())
+                    {
+                        gameObject.AddComponent<MovementCompletition>();
+                    }
+                    IsMoved = !IsMoved;
                 }
-                IsMoved = !IsMoved;
             }
 
             ChangeVelocityCoodinates(ref x_prev_for_velocity, ref y_prev_for_velocity, ref z_prev_for_velocity); 
