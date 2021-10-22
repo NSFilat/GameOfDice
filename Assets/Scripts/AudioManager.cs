@@ -17,6 +17,8 @@ public class AudioManager : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject == _upperWall || collision.gameObject == _lowerWall || collision.gameObject == _rightWall || collision.gameObject == _leftWall)
-        DiceRollingSound.Play();
+        {
+            DiceRollingSound.Play();
+        }
     }
 }
