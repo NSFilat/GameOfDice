@@ -8,7 +8,6 @@ public class Shaking : MonoBehaviour
     private static Vector3 _defaultPosition;
 
     public static bool IsMoved = true;
-    public static bool WasStart = false;
 
     public static double AccelVelocity = 0;
 
@@ -76,7 +75,7 @@ public class Shaking : MonoBehaviour
             //Debug.Log($"Cur_accel speed = {cur_accel_speed}");
             //Debug.Log($"Prev_accel speed = {prev_accel_speed}");
 
-            if (Mathf.Abs((float)(cur_accel_speed - prev_accel_speed)) < 1 && cur_accel_speed < 1 && cur_accel_speed != 0)
+            if (Mathf.Abs((float)(cur_accel_speed - prev_accel_speed)) < _end_speed && cur_accel_speed < 1 && cur_accel_speed != 0)
             {
                 if (!gameObject.GetComponent<MovementCompletition>())
                 {

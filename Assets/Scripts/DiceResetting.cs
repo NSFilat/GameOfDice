@@ -19,7 +19,6 @@ public class DiceResetting : MonoBehaviour
 
     private void Update()
     {
-       // Debug.Log($"Accel_velocity = {Shaking.AccelVelocity}");
         if (CheckX() || CheckY() || CheckZ())
         {
             _diceTransform.position = new Vector3(0, SettingDicePosition.DiceStartPosition, 0);
