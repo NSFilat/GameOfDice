@@ -39,7 +39,7 @@ public class Shaking : MonoBehaviour
         {
             yield return null;
         }
-
+        
         _defaultPosition = Input.acceleration;
         Times++;
         StartCoroutine(ShakingCoroutine());
@@ -48,57 +48,67 @@ public class Shaking : MonoBehaviour
     IEnumerator ShakingCoroutine()
     {
         IsMoved = false;
-
+        double prev_accel_speed = 0;
+        double cur_accel_speed = 0;
         float x_prev_for_velocity = _defaultPosition.x;
-        //float y_prev_for_velocity = _defaultPosition.y;
         float z_prev_for_velocity = _defaultPosition.z;
         
         while (!IsMoved)
         {
-            if (GetVelocity(x_prev_for_velocity, z_prev_for_velocity) > _begin_speed)
+            cur_accel_speed = GetVelocity(x_prev_for_velocity, z_prev_for_velocity);
+
+            if(Mathf.Abs((float)(cur_accel_speed - prev_accel_speed)) > _begin_speed)
             {
                 ChangeForce();
                 IsMoved = !IsMoved;
             }
 
-            ChangeVelocityCoodinates(ref x_prev_for_velocity, /*ref y_prev_for_velocity,*/ ref z_prev_for_velocity);
+            prev_accel_speed = cur_accel_speed;
+            ChangeVelocityCoodinates(ref x_prev_for_velocity, ref z_prev_for_velocity);
             yield return null;
         }
 
         while (IsMoved)
         {
             ChangeForce();
+            cur_accel_speed = GetVelocity(x_prev_for_velocity, z_prev_for_velocity);
 
-            if (GetVelocity(x_prev_for_velocity, z_prev_for_velocity) < _end_speed && _diceRigidbody.velocity.magnitude < 7)
+            //Debug.Log($"Cur_accel speed = {cur_accel_speed}");
+            //Debug.Log($"Prev_accel speed = {prev_accel_speed}");
+
+            if (Mathf.Abs((float)(cur_accel_speed - prev_accel_speed)) < 1 && cur_accel_speed < 1 && cur_accel_speed != 0)
             {
-                _defaultPosition = Input.acceleration;
-                if (_diceRigidbody.velocity.magnitude < _end_speed)
+                if (!gameObject.GetComponent<MovementCompletition>())
                 {
-                    if (!gameObject.GetComponent<MovementCompletition>())
-                    {
-                        gameObject.AddComponent<MovementCompletition>();
-                    }
-                    IsMoved = !IsMoved;
+                    gameObject.AddComponent<MovementCompletition>();
                 }
+                IsMoved = !IsMoved;
             }
 
-            ChangeVelocityCoodinates(ref x_prev_for_velocity, /*ref y_prev_for_velocity,*/ ref z_prev_for_velocity); 
+            prev_accel_speed = cur_accel_speed;
+            ChangeVelocityCoodinates(ref x_prev_for_velocity, ref z_prev_for_velocity); 
+            yield return null;
+        }
+
+        while(!IsMoved)
+        {
+            if (_diceRigidbody.velocity.magnitude < 1)
+                IsMoved = !IsMoved;
+            //Debug.Log("End moving !!");
             yield return null;
         }
 
         StartCoroutine(PreparationCoroutine());
     }
 
-    static private double GetVelocity(float x_prev_for_velocity, /*float y_prev_for_velocity,*/ float z_prev_for_velocity)
+    static private double GetVelocity(float x_prev_for_velocity, float z_prev_for_velocity)
     {
-        return AccelVelocity = Mathf.Sqrt(Mathf.Pow(Input.acceleration.x - x_prev_for_velocity, 2) + /*Mathf.Pow(Input.acceleration.y - y_prev_for_velocity, 2)*/ +
-            Mathf.Pow(Input.acceleration.z - z_prev_for_velocity, 2)) / 0.02;
+        return AccelVelocity = Mathf.Sqrt(Mathf.Pow(Input.acceleration.x - x_prev_for_velocity, 2) + Mathf.Pow(Input.acceleration.z - z_prev_for_velocity, 2)) / 0.02;
     }
 
-    private void ChangeVelocityCoodinates(ref float x_prev_for_velocity, /*ref float y_prev_for_velocity,*/ ref float z_prev_for_velocity)
+    private void ChangeVelocityCoodinates(ref float x_prev_for_velocity, ref float z_prev_for_velocity)
     {
         x_prev_for_velocity = Input.acceleration.x;
-       // y_prev_for_velocity = Input.acceleration.y;
         z_prev_for_velocity = Input.acceleration.z;
     }
 
