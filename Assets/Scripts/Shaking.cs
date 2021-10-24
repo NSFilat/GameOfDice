@@ -38,7 +38,8 @@ public class Shaking : MonoBehaviour
         {
             yield return null;
         }
-        
+
+        _diceRigidbody.maxAngularVelocity = 50;
         _defaultPosition = Input.acceleration;
         Times++;
         StartCoroutine(ShakingCoroutine());
@@ -81,6 +82,7 @@ public class Shaking : MonoBehaviour
                 {
                     gameObject.AddComponent<MovementCompletition>();
                 }
+                _diceRigidbody.maxAngularVelocity = 10;
                 IsMoved = !IsMoved;
             }
 
