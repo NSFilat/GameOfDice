@@ -80,10 +80,10 @@ public class Shaking : MonoBehaviour
 
             if (Mathf.Abs((float)(cur_accel_speed - prev_accel_speed)) < _end_speed && cur_accel_speed < 1 && cur_accel_speed != 0)
             {
-                if (!gameObject.GetComponent<MovementCompletition>())
-                {
-                    gameObject.AddComponent<MovementCompletition>();
-                }
+                //if (!gameObject.GetComponent<MovementCompletition>())
+                //{
+                //    gameObject.AddComponent<MovementCompletition>();
+                //}
 
                 IsTorque = !IsTorque;
                 IsMoved = !IsMoved;
@@ -102,7 +102,7 @@ public class Shaking : MonoBehaviour
             yield return null;
         }
 
-        Destroy(gameObject.GetComponent<MovementCompletition>());
+        //Destroy(gameObject.GetComponent<MovementCompletition>());
         StartCoroutine(PreparationCoroutine());
     }
 
