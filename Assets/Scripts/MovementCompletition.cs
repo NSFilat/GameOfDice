@@ -11,7 +11,7 @@ public class MovementCompletition : MonoBehaviour
         if (IsWall(collision) && IsLowVelocity())
         {
             GetComponent<Rigidbody>().AddForce(_reboundForce, _reboundForce, _reboundForce);
-            Destroy(gameObject.GetComponent<MovementCompletition>());
+            //Destroy(gameObject.GetComponent<MovementCompletition>());
         }
     }
 
