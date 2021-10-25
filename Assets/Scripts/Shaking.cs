@@ -8,7 +8,7 @@ public class Shaking : MonoBehaviour
     private static Vector3 _defaultPosition;
 
     public static bool IsMoved = true;
-    private bool IsTorque = true;
+    public static bool IsTorque = true;
 
     public static double AccelVelocity = 0;
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource DiceRollingSound;
-    [SerializeField] private AudioSource DiceStartSound;
+    [SerializeField] private AudioSource DiceFinishSound;
     [SerializeField] private Rigidbody DiceSpeed;
     [SerializeField] private AudioClip audioClip;
 
@@ -19,7 +19,18 @@ public class AudioManager : MonoBehaviour
         if (collision.gameObject == _upperWall || collision.gameObject == _lowerWall || collision.gameObject == _rightWall || collision.gameObject == _leftWall)
         {
             if(!DiceRollingSound.isPlaying)
-                DiceRollingSound.Play();
+                DiceRollingSound.PlayOneShot(audioClip);
+        }
+    }
+
+    private void Update()
+    {
+        if(!Shaking.IsTorque)
+        {
+            //  if (!DiceFinishSound.isPlaying)
+            //      DiceFinishSound.PlayOneShot(audioClip);
+            DiceFinishSound.Play();
+            Shaking.IsTorque = !Shaking.IsTorque;
         }
     }
 }
