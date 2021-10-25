@@ -8,12 +8,13 @@ public class Shaking : MonoBehaviour
     private static Vector3 _defaultPosition;
 
     public static bool IsMoved = true;
+    private bool IsTorque = true;
 
     public static double AccelVelocity = 0;
 
     public static int Times = 0;
 
-    [SerializeField] private static float s_torque = 6000f;
+    [SerializeField] private static float s_torque = 5000f;
     [SerializeField] private static float s_moveForce = 25000f;
     [SerializeField] private readonly float _maxSpeed = 50f;
     [SerializeField] private readonly float _begin_speed = 15f;
@@ -27,7 +28,7 @@ public class Shaking : MonoBehaviour
     private void Start()
     {
         _diceRigidbody = GetComponent<Rigidbody>();
-        _diceRigidbody.maxAngularVelocity = 50;
+        _diceRigidbody.maxAngularVelocity = 30;
 
         StartCoroutine(PreparationCoroutine());
     }
@@ -39,7 +40,7 @@ public class Shaking : MonoBehaviour
             yield return null;
         }
 
-        _diceRigidbody.maxAngularVelocity = 50;
+        //_diceRigidbody.maxAngularVelocity = 50;
         _defaultPosition = Input.acceleration;
         Times++;
         StartCoroutine(ShakingCoroutine());
@@ -48,6 +49,7 @@ public class Shaking : MonoBehaviour
     IEnumerator ShakingCoroutine()
     {
         IsMoved = false;
+        IsTorque = true;
         double prev_accel_speed = 0;
         double cur_accel_speed = 0;
         float x_prev_for_velocity = _defaultPosition.x;
@@ -82,7 +84,8 @@ public class Shaking : MonoBehaviour
                 {
                     gameObject.AddComponent<MovementCompletition>();
                 }
-                _diceRigidbody.maxAngularVelocity = 10;
+                //_diceRigidbody.maxAngularVelocity = 10;
+                IsTorque = !IsTorque;
                 IsMoved = !IsMoved;
             }
 
@@ -116,7 +119,7 @@ public class Shaking : MonoBehaviour
     private void ChangeForce()
     {
         _diceRigidbody.AddForce(new Vector3(Input.acceleration.z - _defaultPosition.z, 0f, Input.acceleration.x - _defaultPosition.x) * MoveForce * Time.deltaTime);
-        _diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque * Time.deltaTime);
+        if(IsTorque)_diceRigidbody.AddTorque(new Vector3(0, 1, 0) * Torque * Time.deltaTime);
         _diceRigidbody.velocity = Vector3.ClampMagnitude(_diceRigidbody.velocity, _maxSpeed);
     }
 }

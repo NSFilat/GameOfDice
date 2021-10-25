@@ -18,7 +18,8 @@ public class AudioManager : MonoBehaviour
     {
         if (collision.gameObject == _upperWall || collision.gameObject == _lowerWall || collision.gameObject == _rightWall || collision.gameObject == _leftWall)
         {
-            DiceRollingSound.Play();
+            if(!DiceRollingSound.isPlaying)
+                DiceRollingSound.Play();
         }
     }
 }
