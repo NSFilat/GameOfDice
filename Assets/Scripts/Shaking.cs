@@ -84,7 +84,7 @@ public class Shaking : MonoBehaviour
                 {
                     gameObject.AddComponent<MovementCompletition>();
                 }
-                //_diceRigidbody.maxAngularVelocity = 10;
+
                 IsTorque = !IsTorque;
                 IsMoved = !IsMoved;
             }
@@ -102,6 +102,7 @@ public class Shaking : MonoBehaviour
             yield return null;
         }
 
+        Destroy(gameObject.GetComponent<MovementCompletition>());
         StartCoroutine(PreparationCoroutine());
     }
 
