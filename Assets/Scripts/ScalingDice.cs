@@ -13,7 +13,7 @@ public class ScalingDice : MonoBehaviour
     }
     private void ChangeDiceScale(float position_z)
     {
-        float scale = 70 * position_z * ResolutionManager.Size_x / ResolutionManager.Square;
+        float scale = 3 * position_z * ResolutionManager.Size_x / ResolutionManager.Square;
         _dice.localScale = new Vector3(scale, scale, scale);
     }
 }

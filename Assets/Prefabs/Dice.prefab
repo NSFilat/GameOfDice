@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 19801650}
   - component: {fileID: 19801651}
   - component: {fileID: 19801652}
+  - component: {fileID: 1276698038}
   m_Layer: 0
   m_Name: Dice
   m_TagString: Untagged
@@ -34,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 3741693547505944851}
   m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 0, y: 1, z: 0.68907994}
-  m_LocalScale: {x: 70, y: 70, z: 70}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,7 +47,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3741693547505944851}
-  m_Mesh: {fileID: 4300000, guid: 9b2511d03f2a6f54ca0d4f97e2d2b611, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 427e9ff2d7bc7ed41b24ca08983971fb, type: 2}
 --- !u!23 &4972008214858893274
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -118,7 +119,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 9b2511d03f2a6f54ca0d4f97e2d2b611, type: 2}
+  m_Mesh: {fileID: 5060444177187149915, guid: b8935676e01630b4e93239d144f512a8, type: 3}
 --- !u!114 &19801644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,10 +187,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DiceRollingSound: {fileID: 0}
-  DiceStartSound: {fileID: 0}
+  DiceFinishSound: {fileID: 0}
   DiceSpeed: {fileID: 770001727659218064}
-  audioClip: {fileID: 8300000, guid: bf918d65bb6e320428e5e99abb09b289, type: 3}
+  audioClip: {fileID: 8300000, guid: 26c102f88e89bee4e9cd34e885f81da9, type: 3}
   _upperWall: {fileID: 0}
   _lowerWall: {fileID: 0}
   _rightWall: {fileID: 0}
   _leftWall: {fileID: 0}
+--- !u!114 &1276698038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741693547505944851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b60e3a616f5da749928e3ef2a3e7ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
