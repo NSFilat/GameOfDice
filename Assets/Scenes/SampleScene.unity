@@ -1649,23 +1649,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0.253, y: 0, z: 0}
---- !u!1 &1276698028 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3741693547505944851, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
-  m_PrefabInstance: {fileID: 770001727651127662}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1276698038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276698028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b60e3a616f5da749928e3ef2a3e7ea8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1282322678
 GameObject:
   m_ObjectHideFlags: 0
@@ -2828,10 +2811,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1434444102}
     - target: {fileID: 19801652, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
-      propertyPath: audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 26c102f88e89bee4e9cd34e885f81da9, type: 3}
-    - target: {fileID: 19801652, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
       propertyPath: _lowerWall
       value: 
       objectReference: {fileID: 656563505}
@@ -2844,44 +2823,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2091574144}
     - target: {fileID: 19801652, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
-      propertyPath: DiceFinishSound
-      value: 
-      objectReference: {fileID: 19801644}
-    - target: {fileID: 19801652, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
       propertyPath: DiceRollingSound
       value: 
       objectReference: {fileID: 990162283}
-    - target: {fileID: 770001727659218068, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 9b2511d03f2a6f54ca0d4f97e2d2b611, type: 2}
     - target: {fileID: 3741693547505944851, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
       propertyPath: m_Name
       value: Dice
       objectReference: {fileID: 0}
-    - target: {fileID: 4972008214858893274, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5027193292684923269, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -5495902117074765545, guid: 910539e2e7f182845b80d2659a3cc95c, type: 3}
     - target: {fileID: 8841440603915709316, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841440603915709316, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841440603915709316, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841440603915709316, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8841440603915709316, guid: f19835af18409db4ea76eb238f7e442d, type: 3}
       propertyPath: m_LocalPosition.x

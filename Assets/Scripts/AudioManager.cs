@@ -5,8 +5,6 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource DiceRollingSound;
-    [SerializeField] private AudioSource DiceFinishSound;
-    [SerializeField] private Rigidbody DiceSpeed;
     [SerializeField] private AudioClip audioClip;
 
     [SerializeField] private GameObject _upperWall;
@@ -20,17 +18,6 @@ public class AudioManager : MonoBehaviour
         {
             if(!DiceRollingSound.isPlaying)
                 DiceRollingSound.PlayOneShot(audioClip);
-        }
-    }
-
-    private void Update()
-    {
-        if(!Shaking.IsTorque)
-        {
-            //  if (!DiceFinishSound.isPlaying)
-            //      DiceFinishSound.PlayOneShot(audioClip);
-            DiceFinishSound.Play();
-            Shaking.IsTorque = !Shaking.IsTorque;
         }
     }
 }
