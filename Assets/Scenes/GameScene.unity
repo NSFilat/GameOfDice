@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44658208, g: 0.4964187, b: 0.5748189, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465835, g: 0.4964198, b: 0.5748218, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 11799cb7fecf1014abcb0b344bd397e5, type: 2}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 792e15494fc716142b763f44a5f8fd15, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -233,7 +233,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 509659419}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -486,7 +486,7 @@ PrefabInstance:
       objectReference: {fileID: 13400000, guid: 61aea4b6d5c8cda42aaab28d322dfd88, type: 2}
     - target: {fileID: 5585467714810833241, guid: a69a3d116cc2e4749ae46fe41a3c5356, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5585467714810833241, guid: a69a3d116cc2e4749ae46fe41a3c5356, type: 3}
       propertyPath: m_CastShadows
@@ -588,7 +588,7 @@ PrefabInstance:
       objectReference: {fileID: 13400000, guid: 61aea4b6d5c8cda42aaab28d322dfd88, type: 2}
     - target: {fileID: 5585467714810833241, guid: a69a3d116cc2e4749ae46fe41a3c5356, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5585467714810833241, guid: a69a3d116cc2e4749ae46fe41a3c5356, type: 3}
       propertyPath: m_CastShadows
@@ -742,6 +742,7 @@ GameObject:
   - component: {fileID: 963194232}
   - component: {fileID: 963194234}
   - component: {fileID: 963194233}
+  - component: {fileID: 963194229}
   m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -814,6 +815,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 322205750a5b7c241b56cedbe44fe2f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &963194232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1096,7 +1109,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1056150708}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1778,6 +1791,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 883152121}
     m_Modifications:
+    - target: {fileID: 5585467714810833241, guid: a69a3d116cc2e4749ae46fe41a3c5356, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5585467714810833243, guid: a69a3d116cc2e4749ae46fe41a3c5356, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2170,7 +2187,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549791156}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2243,7 +2260,7 @@ PrefabInstance:
       objectReference: {fileID: 13400000, guid: 61aea4b6d5c8cda42aaab28d322dfd88, type: 2}
     - target: {fileID: 5585467714810833241, guid: a69a3d116cc2e4749ae46fe41a3c5356, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5585467714810833241, guid: a69a3d116cc2e4749ae46fe41a3c5356, type: 3}
       propertyPath: m_CastShadows
@@ -2367,7 +2384,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687138216}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

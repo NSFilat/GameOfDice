@@ -11,6 +11,7 @@ public class ParametersInfo : MonoBehaviour
     private GUIStyle myStyle = new GUIStyle();
 
     static private int s_indent;
+    static public bool IsOn = true;
 
     public static int Indent { set { s_indent = value; } get { return s_indent; } }
 
