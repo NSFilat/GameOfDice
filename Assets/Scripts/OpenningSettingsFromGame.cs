@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class OpenningSettingsFromGame : MonoBehaviour
 {
+    MobAdsInterstitialVideo mobAdsInterstitialVideo;
     public void OpenScene()
     {
-        AdsCore.ShowAdsVideo("Interstitial_Android");
+        mobAdsInterstitialVideo.ShowAd();
         SceneManager.LoadScene(2);
     }
 }

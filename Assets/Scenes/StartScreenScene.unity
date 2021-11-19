@@ -672,6 +672,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486897104}
   m_CullTransparentMesh: 0
+--- !u!1 &686601584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 686601587}
+  - component: {fileID: 686601586}
+  - component: {fileID: 686601585}
+  m_Layer: 0
+  m_Name: Ads
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &686601585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686601584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1386ddefe6f3d284f8c358729a6170ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &686601586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686601584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b711cca02a63c4bb90e5d0b72036b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &686601587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686601584}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.5191607, y: 1.6463376, z: -0.46607357}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &780475374
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +1040,6 @@ GameObject:
   - component: {fileID: 1646291036}
   - component: {fileID: 1646291035}
   - component: {fileID: 1646291038}
-  - component: {fileID: 1646291039}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1069,19 +1124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 322205750a5b7c241b56cedbe44fe2f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1646291039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646291034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cddfb28cd786e94428d63c9ea4bcb89c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _testMode: 1
 --- !u!1 &1860872064
 GameObject:
   m_ObjectHideFlags: 0
