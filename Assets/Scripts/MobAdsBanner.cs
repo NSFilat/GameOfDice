@@ -10,8 +10,11 @@ public class MobAdsBanner : MonoBehaviour
 
     private void OnEnable()
     {
-        bannerView = new BannerView(bannerUnitId, AdSize.Banner, AdPosition.Bottom);
+        AdSize adSize = new AdSize(320, 50);
+        bannerView = new BannerView(bannerUnitId, AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth), AdPosition.Bottom);
         AdRequest adRequest = new AdRequest.Builder().Build();
         bannerView.LoadAd(adRequest);
+       
+        //bannerView = new BannerView(bannerUnitId, adSize, AdPosition.Bottom);
     }   
 }
