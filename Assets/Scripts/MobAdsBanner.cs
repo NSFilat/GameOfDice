@@ -6,7 +6,7 @@ using GoogleMobileAds.Api;
 public class MobAdsBanner : MonoBehaviour
 {
     private BannerView bannerView;
-    private const string bannerUnitId = "ca-app-pub-3940256099942544/6300978111";
+    private const string bannerUnitId = "ca-app-pub-3936460874675485/6026160832";
 
     private void OnEnable()
     {

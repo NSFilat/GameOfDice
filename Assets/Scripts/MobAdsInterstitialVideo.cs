@@ -8,7 +8,7 @@ public class MobAdsInterstitialVideo : MonoBehaviour
 {
     private InterstitialAd InterstitialAd;
 
-    private const string InterstitialUnitId = "ca-app-pub-3940256099942544/8691691433";
+    private const string InterstitialUnitId = "ca-app-pub-3936460874675485/4257266677";
 
     private void OnEnable()
     {
